@@ -1,0 +1,43 @@
+.header{
+    /* width: 100%; */
+    padding: 0.5rem 4rem;
+    height: fit-content;
+    background-color: #FFFFFF;
+    color: #585858;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .navbar-right{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 2rem;
+}
+a{
+    text-decoration: none;
+    color: unset;
+    border: none;
+    padding: 0;
+    height: min-content;
+}
+a:hover{
+    text-decoration: none;
+    color: unset;
+}
+a .tabler-icon{
+    box-sizing: border-box;
+    stroke-width: 2px;
+    vertical-align: bottom;
+    transition: all ease 0.1s;
+    transform-origin: center;
+    transform: scale(1);
+}
+a:hover .tabler-icon{
+    transform: scale(1.05);
+}
+.account .tabler-icon{
+    stroke-width: 1px;
+    width: 4rem;
+    height: 4rem;
+}
