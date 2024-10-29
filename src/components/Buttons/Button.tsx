@@ -1,12 +1,14 @@
 import { Fragment, MouseEventHandler, ReactNode } from "react";
+import './Button.css'
 
-type IconPosition="left"|"right";
+type IconPosition = "left" | "right";
 
 interface Props {
     onClick?: MouseEventHandler,
     icon?: ReactNode,
     iconPos?: IconPosition,
-    children?: ReactNode
+    children?: ReactNode,
+    className?: string,
 }
 const ButtonContent = (props: Props) => {
     if (props.icon) {
@@ -21,9 +23,16 @@ const ButtonContent = (props: Props) => {
                 {props.children}
             </Fragment>
     }
+    else
+        return <Fragment>
+            {props.children}
+        </Fragment>
+
 }
 const Button = (props: Props) => {
-    return <button onClick={props.onClick} className="text-3xl font-bold underline">
+    return <button onClick={props.onClick} className={
+        `btn ${props.className} ${!props.children && "btn-icon"}`
+    }>
         <ButtonContent {...props}>
             {props.children}
         </ButtonContent>

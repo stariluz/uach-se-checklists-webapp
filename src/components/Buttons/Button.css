@@ -1,0 +1,45 @@
+:root {
+    --ssltc-btn-primary-bg: #46CE95;
+    --ssltc-btn-primary-text: #FFFFFF;
+    --ssltc-btn-secondary-bg: #F4F4F4;
+    --ssltc-btn-secondary-text: #585858;
+    --ssltc-btn-danger-bg: #F17373;
+    --ssltc-btn-danger-text: #FFFFFF;
+}
+
+.btn {
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    font-size: 1rem;
+    font-weight: 600;
+    --bg: var(--ssltc-btn-primary-bg);
+    background-color: var(--bg);
+}
+.btn-icon{
+    padding: 0.25rem 0.25rem;
+}
+
+.btn .tabler-icon {
+    font-size: 0.75rem;
+}
+
+.btn.btn-primary {
+    --bg: var(--ssltc-btn-primary-bg);
+}
+
+.btn.btn-secondary {
+    --bg: var(--ssltc-btn-secondary-bg);
+    color: var(--ssltc-btn-secondary-text);
+    border: 1px solid var(--ssltc-btn-secondary-text);
+}
+
+.btn.btn-danger {
+    --bg: var(--ssltc-btn-danger-bg);
+}
