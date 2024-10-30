@@ -1,0 +1,25 @@
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    gap: 0.75rem;
+}
+
+.actions.floating {
+    background-color: white;
+    border-radius: 5rem;
+    flex-direction: column;
+    padding: 0.625rem;
+
+    position: absolute;
+    left: 100%;
+    margin-left: 1rem;
+}
+
+.actions.floating.horizontal {
+    flex-direction: unset;
+}
+.actions button{
+    padding: 0;
+}

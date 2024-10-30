@@ -1,0 +1,44 @@
+.ownership {
+    font-style: italic;
+}
+
+.item {
+    background: rgb(251, 251, 251);
+    background: -moz-linear-gradient(142deg, rgba(251, 251, 251, 1) 74%, rgba(247, 247, 247, 1) 100%);
+    background: -webkit-linear-gradient(142deg, rgba(251, 251, 251, 1) 74%, rgba(247, 247, 247, 1) 100%);
+    background: linear-gradient(142deg, rgba(251, 251, 251, 1) 74%, rgba(247, 247, 247, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fbfbfb", endColorstr="#f7f7f7", GradientType=1);
+
+    color: #1B1B1B;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.item-header {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.item-subheader {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
+}
+.item-actions{
+    z-index: 2;
+}
