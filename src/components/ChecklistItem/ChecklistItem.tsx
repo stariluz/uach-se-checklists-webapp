@@ -1,3 +1,4 @@
+import ChecklistActions from '../ChecklistActions/ChecklistActions';
 import ProfilePicture from '../UserImage/ProfilePicture';
 import './ChecklistItem.css'
 
@@ -7,7 +8,7 @@ class ChecklistItemModel {
     user?: any
     created_at?: Date = new Date()
     updated_at?: Date = new Date()
-    url?:string
+    url?: string
 }
 interface Props {
     className?: string
@@ -30,12 +31,15 @@ const ChecklistOwnership = (props: Ownership) => {
 const ChecklistItem = (props: Props) => {
     return <article className='item'>
         <a className='item-link' href={props.checklist?.url || "#"}></a>
-        <h2 className='item-header'>{props.checklist?.title || "Title is missing"}</h2>
-        <div className='item-subheader'>
-            <ChecklistOwnership />
-            <span>Creado el {props.checklist?.created_at?.toString() || "dd de mmmm del yyyy"}</span>
-            <span>Ult. Modificación el {props.checklist?.updated_at?.toString() || "dd de mmmm del yyyy"}</span>
+        <div className="item-content">
+            <h2 className='item-header'>{props.checklist?.title || "Title is missing"}</h2>
+            <div className='item-subheader'>
+                <ChecklistOwnership />
+                <span>Creado el {props.checklist?.created_at?.toString() || "dd de mmmm del yyyy"}</span>
+                <span>Ult. Modificación el {props.checklist?.updated_at?.toString() || "dd de mmmm del yyyy"}</span>
+            </div>
         </div>
+        <ChecklistActions className='item-actions'/>
     </article>
 }
 export default ChecklistItem;
