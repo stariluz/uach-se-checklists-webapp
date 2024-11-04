@@ -4,6 +4,7 @@ import ButtonsDev from '../components/Development/ButtonsDev'
 import Header from '../components/Header/Header'
 import ChecklistItem from '../components/ChecklistItem/ChecklistItem'
 import ChecklistActions from '../components/ChecklistActions/ChecklistActions'
+import GoogleLoginLogic from '../components/Auth/GoogleLoginLogic'
 
 function HomePage() {
   return (
@@ -18,6 +19,7 @@ function HomePage() {
       </div>
       <h1>SSLTC</h1>
       <ButtonsDev></ButtonsDev>
+      <GoogleLoginLogic />
     </>
   )
 }
