@@ -1,10 +1,9 @@
-import reactLogo from '../assets/react.svg'
 import './HomePage.css'
 import ButtonsDev from '../components/Development/ButtonsDev'
-import Header from '../components/Header/Header'
-import ChecklistItem from '../components/ChecklistItem/ChecklistItem'
-import ChecklistActions from '../components/ChecklistActions/ChecklistActions'
-import GoogleLoginLogic from '../components/Auth/GoogleLoginLogic'
+import Header from 'src/components/Header/Header'
+import ChecklistItem from 'src/components/ChecklistItem/ChecklistItem'
+import ChecklistActions from 'src/components/ChecklistActions/ChecklistActions'
+import GoogleLoginLogic from 'src/components/Auth/GoogleLoginLogic'
 
 function HomePage() {
   return (
