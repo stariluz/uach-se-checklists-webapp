@@ -1,4 +1,4 @@
-import TaskModel from "./TaskModel.model";
-// import CreateTaskModel from "./TaskModel.model";
+import TaskModel from "./TaskModel";
+import CreateTaskModel from "./CreateTaskModel";
 
-export {TaskModel, }
+export {TaskModel, CreateTaskModel}
