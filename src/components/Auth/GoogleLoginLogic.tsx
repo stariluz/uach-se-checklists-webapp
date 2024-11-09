@@ -30,7 +30,7 @@ const GoogleLoginLogic = () => {
   };
 
   return (
-    <GoogleOAuthProvider clientId='1008438548380-ubd3odhucqpdecjmr1d3951oq2da2e66.apps.googleusercontent.com'>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || ''}>
       <GoogleLogin
         onSuccess={handleLoginSuccess}
         onError={handleLoginFailure}

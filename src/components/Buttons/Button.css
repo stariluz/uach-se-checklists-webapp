@@ -1,4 +1,5 @@
 :root {
+    --ssltc-btn-gosth-bg: #ffffff00;
     --ssltc-btn-primary-bg: #46CE95;
     --ssltc-btn-primary-text: #FFFFFF;
     --ssltc-btn-secondary-bg: #F4F4F4;
@@ -21,8 +22,13 @@
     font-weight: 600;
     --bg: var(--ssltc-btn-primary-bg);
     background-color: var(--bg);
+    --color: var(--ssltc-btn-primary-text);
+    color: var(--color);
+    --border: var(--ssltc-btn-primary-bg);
+    border: 1px solid var(--border);
 }
-.btn-icon{
+
+.btn-icon {
     padding: 0.25rem 0.25rem;
 }
 
@@ -32,14 +38,36 @@
 
 .btn.btn-primary {
     --bg: var(--ssltc-btn-primary-bg);
+    --color: var(--ssltc-btn-primary-text);
+    --border: var(--ssltc-btn-primary-bg);
 }
 
 .btn.btn-secondary {
     --bg: var(--ssltc-btn-secondary-bg);
-    color: var(--ssltc-btn-secondary-text);
-    border: 1px solid var(--ssltc-btn-secondary-text);
+    --color: var(--ssltc-btn-secondary-text);
+    --border: var(--ssltc-btn-secondary-text);
 }
 
 .btn.btn-danger {
     --bg: var(--ssltc-btn-danger-bg);
+    --color: var(--ssltc-btn-danger-text);
+    --border: var(--ssltc-btn-danger-bg);
+}
+
+.btn.btn-primary.btn-ghost {
+    --bg: var(--ssltc-btn-gosth-bg);
+    --border: var(--ssltc-btn-gosth-bg);
+    --color: var(--ssltc-btn-primary-bg);
+}
+
+.btn.btn-secondary.btn-ghost {
+    --bg: var(--ssltc-btn-gosth-bg);
+    --border: var(--ssltc-btn-gosth-bg);
+    --color: var(--ssltc-btn-secondary-text);
+}
+
+.btn.btn-danger.btn-ghost {
+    --bg: var(--ssltc-btn-gosth-bg);
+    --border: var(--ssltc-btn-gosth-bg);
+    --color: var(--ssltc-btn-danger-bg);
 }
