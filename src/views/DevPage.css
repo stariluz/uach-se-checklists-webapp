@@ -6,12 +6,9 @@
 }
 
 .container{
-  margin: 1rem auto;
   overflow: visible;
-  border-radius: 1rem;
-  width: 940px;
+  width: 5rem;
   min-height: 5rem;
-  height: min-content;
   background-color: #FFFFFF;
 }
 

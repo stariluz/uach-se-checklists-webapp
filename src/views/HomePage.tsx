@@ -1,24 +1,16 @@
-import reactLogo from '../assets/react.svg'
 import './HomePage.css'
-import ButtonsDev from '../components/Development/ButtonsDev'
 import Header from '../components/Header/Header'
+import ChecklistsList from '../components/ChecklistsList/ChecklistsList'
 
 function HomePage() {
   return (
     <>
-      <Header/>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header />
+      <div className="container">
+        <ChecklistsList />
       </div>
-      <h1>Vite + React</h1>
-      <ButtonsDev></ButtonsDev>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
 
-export default HomePage
+export default HomePage;
