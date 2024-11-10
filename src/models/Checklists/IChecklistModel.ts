@@ -5,8 +5,8 @@ interface IChecklistModel extends IBaseModel {
     user_id?: UUID;
     title?: string;
     due_date?: Date;
+    completed_at?: Date;
     completeness?: Boolean;
     url?: string;
-    completed_at?: Date;
 }
 export default IChecklistModel;
