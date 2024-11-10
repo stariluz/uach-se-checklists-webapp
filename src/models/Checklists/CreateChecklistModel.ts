@@ -1,9 +1,10 @@
-import { randomUUID, UUID } from "crypto";
+import { v4 as uuidv4 } from 'uuid';
+import UUID from 'src/types/uuid.type';
 import BaseModel from "../BaseModel";
 import IPermissionModel from "./IChecklistModel";
 
 class CreatePermissionModel extends BaseModel implements IPermissionModel {
-    user_id?: UUID = randomUUID();
+    user_id?: UUID = uuidv4() as UUID;
     title?: string = "";
     due_date?: Date = new Date();
     completed_at?: Date = new Date();

@@ -1,0 +1,10 @@
+.checklists-list{
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding: none;
+    margin: none;
+    display: grid;
+    row-gap: 1rem;
+}

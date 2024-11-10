@@ -1,4 +1,4 @@
-import { UUID } from "crypto";
+import UUID from 'src/types/uuid.type';
 import IBaseModel from "../IBaseModel";
 
 interface IChecklistGuestModelModel extends IBaseModel {

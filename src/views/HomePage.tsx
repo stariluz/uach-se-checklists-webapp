@@ -1,26 +1,27 @@
 import './HomePage.css'
-import ButtonsDev from '../components/Development/ButtonsDev'
 import Header from 'src/components/Header/Header'
-import ChecklistItem from 'src/components/ChecklistItem/ChecklistItem'
-import ChecklistActions from 'src/components/ChecklistActions/ChecklistActions'
-import GoogleLoginLogic from 'src/components/Auth/GoogleLoginLogic'
+import ChecklistsList from 'src/components/ChecklistsList/ChecklistsList'
+import Button from 'src/components/Buttons/Button'
+import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus'
 
 function HomePage() {
   return (
     <>
       <Header />
-      <ChecklistItem />
-
-      <ChecklistActions />
-      <div className='relative container'>
-        <ChecklistActions className='floating' />
-        <ChecklistActions className='floating horizontal' />
+      <div className="container">
+        <div className="container-head">
+          <Button
+            icon={<IconLibraryPlus />}
+            iconPos='left'
+          >
+            Crear nueva checklist
+          </Button>
+          <div>{/* @todo Select control */}</div>
+        </div>
+        <ChecklistsList />
       </div>
-      <h1>SSLTC</h1>
-      <ButtonsDev></ButtonsDev>
-      <GoogleLoginLogic />
     </>
   )
 }
 
-export default HomePage
+export default HomePage;

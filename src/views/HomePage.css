@@ -5,13 +5,23 @@
   position: relative;
 }
 
-.container{
+.container {
+  margin: 1rem auto;
+  padding: 1.5rem;
   overflow: visible;
-  width: 5rem;
+  border-radius: 1rem;
+  width: 940px;
+  max-width: calc(100% - 1rem);
   min-height: 5rem;
+  height: min-content;
   background-color: #FFFFFF;
 }
-
-.relative{
+.container-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.relative {
   position: relative;
 }
