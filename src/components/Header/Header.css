@@ -25,7 +25,7 @@ a:hover{
     text-decoration: none;
     color: unset;
 }
-a .tabler-icon{
+a .icon{
     box-sizing: border-box;
     stroke-width: 2px;
     vertical-align: bottom;
@@ -33,10 +33,10 @@ a .tabler-icon{
     transform-origin: center;
     transform: scale(1);
 }
-a:hover .tabler-icon{
+a:hover .icon{
     transform: scale(1.05);
 }
-.account .tabler-icon{
+.account .icon{
     stroke-width: 1px;
     width: 4rem;
     height: 4rem;

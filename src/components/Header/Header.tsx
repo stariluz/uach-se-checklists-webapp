@@ -1,4 +1,4 @@
-import { IconDoorExit, IconUserCircle } from '@tabler/icons-react'
+import { IconDoorExit, IconUserCircle } from '../Icons';
 import './Header.css'
 
 const Header=()=>{

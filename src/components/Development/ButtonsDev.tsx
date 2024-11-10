@@ -1,5 +1,5 @@
-import { Icon12Hours, IconPencilPlus } from "@tabler/icons-react";
 import Button from "../Buttons/Button";
+import { Icon12Hours, IconPencilPlus } from "../Icons";
 
 import "./ButtonsDev.css"
 

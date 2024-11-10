@@ -1,4 +1,3 @@
-import { IconUserCircle } from '@tabler/icons-react';
 import './ProfilePicture.css'
 
 interface Props {
