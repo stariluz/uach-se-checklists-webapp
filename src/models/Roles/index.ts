@@ -1,4 +1,4 @@
-import TaskModel from "./TaskModel";
-import CreateTaskModel from "./CreateTaskModel";
+import RoleModel from "./RoleModel";
+import CreateRoleModel from "./CreateRoleModel";
 
-export {TaskModel, CreateTaskModel}
+export {RoleModel, CreateRoleModel}
