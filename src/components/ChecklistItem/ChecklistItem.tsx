@@ -1,15 +1,8 @@
+import { ChecklistItemModel } from 'src/models/Checklists/ChecklistItemModel';
 import ChecklistActions from '../ChecklistActions/ChecklistActions';
 import ProfilePicture from '../UserImage/ProfilePicture';
 import './ChecklistItem.css'
 
-class ChecklistItemModel {
-    title?: string
-    user_id?: string
-    user?: any
-    created_at?: Date = new Date()
-    updated_at?: Date = new Date()
-    url?: string
-}
 interface Props {
     className?: string
     checklist?: ChecklistItemModel
