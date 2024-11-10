@@ -1,4 +1,5 @@
-import { randomUUID, UUID } from "crypto";
+import { v4 as uuidv4 } from 'uuid';
+import UUID from 'src/types/uuid.type';
 import IBaseModel from "./IBaseModel";
 import ITaskModel from "./Tasks/ITaskModel";
 
@@ -11,7 +12,7 @@ class BaseModel implements IBaseModel {
         created_at,
         updated_at
     }: ITaskModel = {}) {
-        this.id = id ?? randomUUID();
+        this.id = id ?? uuidv4() as UUID;
         this.created_at = created_at ?? new Date();
         this.updated_at = updated_at ?? new Date();
     }

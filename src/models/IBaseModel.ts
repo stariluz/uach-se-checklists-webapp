@@ -1,4 +1,4 @@
-import { UUID } from "crypto";
+import UUID from 'src/types/uuid.type';
 
 interface IBaseModel{
     id?: UUID;
