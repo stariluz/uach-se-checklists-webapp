@@ -19,6 +19,7 @@
     gap: 0.5rem;
 
     font-size: 1rem;
+    line-height: 1.5;
     font-weight: 600;
     --bg: var(--ssltc-btn-primary-bg);
     background-color: var(--bg);
@@ -32,7 +33,7 @@
     padding: 0.25rem 0.25rem;
 }
 
-.btn .tabler-icon {
+.btn .icon {
     font-size: 0.75rem;
 }
 

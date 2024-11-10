@@ -1,6 +1,6 @@
-import { IconDoorExit, IconEdit, IconShare, IconTrashXFilled } from '@tabler/icons-react'
 import Button from '../Buttons/Button'
 import './ChecklistActions.css'
+import { IconShare, IconDoorExit, IconEdit, IconTrashXFilled } from '../Icons';
 
 class ChecklistRole {
     title?: string;
