@@ -27,8 +27,16 @@
     color: var(--color);
     --border: var(--ssltc-btn-primary-bg);
     border: 1px solid var(--border);
+    transition: 0.1s ease all;
 }
-
+.btn:focus:focus-within{
+    outline: none;
+    border-radius: blue;
+}
+.btn:active{
+    filter: brightness(0.95);
+    transform: scale(0.98);
+}
 .btn-icon {
     padding: 0.25rem 0.25rem;
 }

@@ -1,4 +1,4 @@
-import ChecklistModelModel from "./ChecklistModel";
-import CreateChecklistModelModel from "./CreateChecklistModel";
+import ChecklistModel from "./ChecklistModel";
+import CreateChecklistModel from "./CreateChecklistModel";
 
-export { ChecklistModelModel, CreateChecklistModelModel }
+export { ChecklistModel, CreateChecklistModel }
