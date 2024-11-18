@@ -1,0 +1,18 @@
+.checklist-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.checklist-title {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.checklist-data {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
+    font-size: 0.875rem;
+}

@@ -5,8 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import HomePage from "../views/HomePage/HomePage";
-import DevPage from "src/views/DevPage";
 import Layout from "src/components/Layout/Layout";
+import ChecklistDetail from "src/views/ChecklistDetail/ChecklistDetail";
 
 const router = createBrowserRouter(
   [
@@ -17,6 +17,11 @@ const router = createBrowserRouter(
         {
           path: "/",
           element: <HomePage />,
+          children: []
+        },
+        {
+          path: "/:url",
+          element: <ChecklistDetail />,
           children: []
         },
         // {
