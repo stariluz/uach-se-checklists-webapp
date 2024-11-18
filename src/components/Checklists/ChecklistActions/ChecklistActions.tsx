@@ -1,6 +1,6 @@
-import Button from '../Buttons/Button'
+import Button from 'src/components/Buttons/Button';
 import './ChecklistActions.css'
-import { IconShare, IconDoorExit, IconEdit, IconTrashXFilled } from '../Icons';
+import { IconShare, IconDoorExit, IconEdit, IconTrashXFilled} from  'src/components/Icons';
 
 class ChecklistRole {
     title?: string;

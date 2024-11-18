@@ -1,5 +1,5 @@
 import './HomePage.css'
-import ChecklistsList from 'src/components/ChecklistsList/ChecklistsList'
+import ChecklistsList from 'src/components/Checklists/ChecklistsList/ChecklistsList'
 import Button from 'src/components/Buttons/Button'
 import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus'
 import useDialog from 'src/hooks/useDialog';
@@ -44,7 +44,7 @@ function HomePage() {
         <ChecklistsList />
       </div>
     </>
-  )
+  );
 }
 
 export default HomePage;

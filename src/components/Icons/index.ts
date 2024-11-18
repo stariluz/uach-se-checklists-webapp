@@ -5,6 +5,8 @@ import IconPencilPlus from './IconPencilPlus'
 import IconShare from './IconShare'
 import IconTrashXFilled from './IconTrashXFilled'
 import IconUserCircle from './IconUserCircle'
+import IconPlus from './IconPlus'
+import IconArrowBack from './IconArrowBack'
 
 export {
     Icon12Hours,
@@ -14,5 +16,7 @@ export {
     IconShare,
     IconTrashXFilled,
     IconUserCircle,
+    IconPlus,
+    IconArrowBack
 }
 
