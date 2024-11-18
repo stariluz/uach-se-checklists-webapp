@@ -22,7 +22,7 @@ const ChecklistOwnership = (props: Ownership) => {
         <span className='ownership'>Compartido</span>
 }
 const ChecklistItem = (props: Props) => {
-    return <article className='item'>
+    return <article className={`item ${props.className}`}>
         <a className='item-link' href={props.checklist?.url || "#"}></a>
         <div className="item-content">
             <h2 className='item-header'>{props.checklist?.title || "Title is missing"}</h2>

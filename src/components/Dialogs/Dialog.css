@@ -1,0 +1,24 @@
+.dialog{
+    width: 450px;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: none;
+}
+.dialog-open{
+    display: unset;
+}
+
+.dialog-footer{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.dialog-footer.footer-center{
+    justify-content: center;
+}
+.dialog-footer.footer-distributed{
+    justify-content: space-between;
+}

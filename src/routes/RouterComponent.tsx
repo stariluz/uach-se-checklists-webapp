@@ -4,18 +4,31 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import HomePage from "../views/HomePage";
+import HomePage from "../views/HomePage/HomePage";
+import DevPage from "src/views/DevPage";
+import Layout from "src/components/Layout/Layout";
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <HomePage />,
-      children: []
-    },
-    {
-      path: '*',
-      element: <Navigate to={`/`} />
+      element: <Layout />,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />,
+          children: []
+        },
+        // {
+        //   path: "/dev",
+        //   element: <DevPage />,
+        //   children: []
+        // },
+        {
+          path: '*',
+          element: <Navigate to={`/`} />
+        }
+      ]
     }
   ],
   {

@@ -1,4 +1,4 @@
-import { Fragment, MouseEventHandler, ReactNode } from "react";
+import { Fragment, MouseEventHandler, MouseEvent,ReactNode } from "react";
 import './Button.css'
 
 type IconPosition = "left" | "right";
@@ -30,7 +30,12 @@ const ButtonContent = (props: Props) => {
 
 }
 const Button = (props: Props) => {
-    return <button onClick={props.onClick} className={
+    const onClick:MouseEventHandler=(event:MouseEvent)=>{
+        if(props.onClick){
+            props.onClick(event);
+        }
+    }
+    return <button onClick={onClick} className={
         `btn ${props.className} ${!props.children && "btn-icon"}`
     }>
         <ButtonContent {...props}>

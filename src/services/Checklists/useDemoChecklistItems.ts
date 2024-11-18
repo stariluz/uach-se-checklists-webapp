@@ -5,7 +5,6 @@ import { UserModel } from "src/models/Users";
 const useDemoChecklistItems = (count: number = 5) => {
     const [items, setItems] = useState<ChecklistItemModel[]>([]);
     useEffect(() => {
-        console.log(count, items)
         const generatedItems: ChecklistItemModel[] = Array.from({ length: count }, (_, index) => {
             return new ChecklistItemModel({
                 user: new UserModel({
