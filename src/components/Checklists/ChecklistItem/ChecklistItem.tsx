@@ -16,7 +16,7 @@ const ChecklistItem = (props: Props) => {
         <div className="item-content">
             <ChecklistInfo checklist={props.checklist}/>
         </div>
-        <ChecklistActions className='item-actions' />
+        <ChecklistActions className='item-actions' checklist={props.checklist}/>
     </article>
 }
 export default ChecklistItem;

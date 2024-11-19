@@ -2,13 +2,13 @@ import Button from "src/components/Buttons/Button";
 import Checkbox from "src/components/Checkbox/Checkbox";
 import { IconEdit, IconTrashXFilled } from "src/components/Icons";
 import { TaskModel } from "src/models/Tasks";
-import styles from './TaskItem.module.css';
+import styles from './TaskItems.module.css';
 
 interface Props {
     task?: TaskModel;
 }
 
-const TaskItem = (props: Props) => {
+const TaskItemOwner = (props: Props) => {
     return <article className={`${styles['task']}`}>
         <Button
             className="btn-danger btn-ghost"
@@ -25,4 +25,4 @@ const TaskItem = (props: Props) => {
     </article>
 }
 
-export default TaskItem;
+export default TaskItemOwner;
