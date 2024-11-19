@@ -1,23 +1,11 @@
 import Button from 'src/components/Buttons/Button';
 import './ChecklistActions.css'
-import { IconShare, IconDoorExit, IconEdit, IconTrashXFilled} from  'src/components/Icons';
+import { IconShare, IconDoorExit, IconEdit, IconTrashXFilled } from 'src/components/Icons';
+import { RoleType } from 'src/models/Roles';
 
-class ChecklistRole {
-    title?: string;
-    operation?: 'OWNER' | 'COLABORATOR' | 'SPECTATOR';
-}
-
-class ChecklistActionsModel {
-    title?: string
-    completeness?: boolean
-    due_date?: Date = new Date()
-    updated_at?: Date = new Date()
-    url?: string
-    role?: ChecklistRole;
-}
 interface Props {
-    className?: string
-    checklist?: ChecklistActionsModel
+    className?: string;
+    role?: RoleType;
 }
 
 const ChecklistActions = (props: Props) => {
@@ -33,9 +21,11 @@ const ChecklistActions = (props: Props) => {
     const handleLeave = () => {
 
     }
+    console.log(props.role)
+    if (!props.role) return null
     return <div className={`actions ${props.className || ''}`}>
         {
-            props.checklist?.role?.operation == 'OWNER' ?
+            props.role == 'OWNER' ?
                 <>
                     <Button
                         className='btn-ghost btn-secondary'
@@ -59,7 +49,6 @@ const ChecklistActions = (props: Props) => {
                     icon={<IconDoorExit />}
                     onClick={() => handleLeave}
                 ></Button>
-
         }
     </div>
 }
