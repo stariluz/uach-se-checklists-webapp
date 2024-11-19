@@ -1,3 +1,4 @@
+import { IconUserCircle } from '../Icons';
 import './ProfilePicture.css'
 
 interface Props {

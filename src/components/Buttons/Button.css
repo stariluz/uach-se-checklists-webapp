@@ -80,3 +80,7 @@
     --border: var(--ssltc-btn-gosth-bg);
     --color: var(--ssltc-btn-danger-bg);
 }
+.btn.btn-ghost:active{
+    filter: brightness(0.9);
+    transform: scale(0.9);
+}

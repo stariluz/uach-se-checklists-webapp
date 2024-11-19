@@ -1,5 +1,6 @@
-.icon {
-    width: 1.5rem;
-    height: 1.5rem;
+.icon-box {
+    width: fit-content;
+    height: fit-content;
     margin: 0;
+    display: flex;
 }

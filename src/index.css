@@ -55,7 +55,9 @@ h2{
   margin: 0;
   line-height: 1.5;
 }
-
+.relative {
+  position: relative;
+}
 
 @media (prefers-color-scheme: light) {
   :root {

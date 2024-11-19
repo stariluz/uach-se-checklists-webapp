@@ -12,7 +12,7 @@ const useDemoChecklistItems = (count: number = 5) => {
                     email: `user${index}@example.com`,
                     picture_url: ``
                 }),
-                url: `${index}/${index}`,
+                url: `${index}`,
             });
         });
         setItems(generatedItems);
