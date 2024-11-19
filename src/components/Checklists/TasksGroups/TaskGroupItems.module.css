@@ -1,0 +1,14 @@
+.tasks-group{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.tasks-group-content{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 100%;
+    background-color: #F4F4F4;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.25rem;
+}
