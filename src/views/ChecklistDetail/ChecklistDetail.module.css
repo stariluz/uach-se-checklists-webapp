@@ -28,7 +28,7 @@
 .checklist-actions-sm{
     display: none;
 }
-.taskslist{
+.taskslist-container{
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
