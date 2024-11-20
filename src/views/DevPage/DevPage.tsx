@@ -1,8 +1,8 @@
 import './DevPage.css'
-import ButtonsDev from '../components/Development/ButtonsDev'
-import Header from '../components/Header/Header'
-import ChecklistItem from '../components/Checklists/ChecklistItem/ChecklistItem'
-import GoogleLoginLogic from '../components/Auth/GoogleLoginLogic'
+import ButtonsDev from 'src/components/Development/ButtonsDev'
+import Header from 'src/components/Header/Header'
+import ChecklistItem from 'src/components/Checklists/ChecklistItem/ChecklistItem'
+import GoogleLoginLogic from 'src/components/Auth/GoogleLoginLogic'
 import ChecklistActions from 'src/components/Checklists/ChecklistActions/ChecklistActions'
 
 function DevPage() {
