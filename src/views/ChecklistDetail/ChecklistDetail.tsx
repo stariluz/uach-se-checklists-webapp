@@ -20,7 +20,7 @@ const ChecklistDetail = (props: Props) => {
         return null;
     }
     return (
-        <div className={`container ${props.className} ${styles["container"]}`}>
+        <div className={`container ${props.className??''} ${styles["container"]}`}>
             <ChecklistActions
                 role={checklist.guest?.role}
                 className={`floating ${styles["checklist-actions"]}`}

@@ -1,0 +1,23 @@
+/* Contenedor que contiene el input y el botón */
+
+.input-date-container {
+    position: relative;
+    display: flex;
+}
+
+.input-date-input {
+    font-family: "Open Sans", sans-serif;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input-date-input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.input-date-input::-moz-calendar-picker-indicator {
+    display: none;
+}
+.input-date-btn{
+    border-radius: 0px 4px 4px 0px;
+}

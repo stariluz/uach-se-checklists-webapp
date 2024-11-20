@@ -1,0 +1,46 @@
+.input-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 1px 0px 4px #0c0c0d1a 1px 0px 4px #0c0c0d1a;
+}
+
+.input-toggle-label {
+    width: 100%;
+    height: fit-content;
+    padding: 8px 10px;
+    border: 1px solid var(--ssltc-btn-secondary-text);
+    line-height: 1.15;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.input.input-toggle-label {
+    box-shadow: none;
+}
+
+.input-toggle-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.input-toggle-input-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.input-toggle-input {
+    display: none;
+    /* Ocultar el input real */
+}
+
+.input-toggle-btn {
+    border-radius: 0px;
+}
+
+.input-toggle-btn:last-child {
+    border-radius: 0px 4px 4px 0px;
+}

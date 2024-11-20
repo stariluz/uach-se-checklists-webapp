@@ -3,30 +3,13 @@ import ChecklistsList from 'src/components/Checklists/ChecklistsList/ChecklistsL
 import Button from 'src/components/Buttons/Button'
 import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus'
 import useDialog from 'src/hooks/useDialog';
-import Dialog from 'src/components/Dialogs/Dialog';
+import CreateChecklistDialog from 'src/components/Dialogs/CreateChecklistDialog/CreateChecklistDialog';
 
 function HomePage() {
-  const { showDialog, closeDialog } = useDialog();
-  const createChecklist=()=>{
-    // @todo verify data is right and call create checklist methods
-    // @todo check exceptions and show alerts with them
-    closeDialog();
-  }
+  const { showDialog } = useDialog();
   const openDialogCreateChecklist=()=>{
     console.log("show dialog")
-    showDialog(
-      <Dialog
-          header={
-              <h2>
-                  Titulo del dialog
-              </h2>
-          }
-          onConfirm={createChecklist}
-          onCancel={closeDialog}
-      >
-          Este es un dialog
-      </Dialog>
-    );
+    showDialog(<CreateChecklistDialog/>);
   }
   return (
     <>

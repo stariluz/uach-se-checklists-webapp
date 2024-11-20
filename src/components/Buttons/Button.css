@@ -31,7 +31,6 @@
 }
 .btn:focus:focus-within{
     outline: none;
-    border-radius: blue;
 }
 .btn:active{
     filter: brightness(0.95);
@@ -83,4 +82,22 @@
 .btn.btn-ghost:active{
     filter: brightness(0.9);
     transform: scale(0.9);
+}
+
+.btn.btn-primary.btn-negative {
+    --bg: var(--ssltc-btn-primary-text);
+    --color: var(--ssltc-btn-primary-bg);
+    --border: var(--ssltc-btn-primary-bg);
+}
+
+.btn.btn-secondary.btn-negative {
+    --bg: var(--ssltc-btn-secondary-text);
+    --color: var(--ssltc-btn-secondary-bg);
+    --border: var(--ssltc-btn-secondary-text);
+}
+
+.btn.btn-danger.btn-negative {
+    --bg: var(--ssltc-btn-danger-text);
+    --color: var(--ssltc-btn-danger-bg);
+    --border: var(--ssltc-btn-danger-bg);
 }

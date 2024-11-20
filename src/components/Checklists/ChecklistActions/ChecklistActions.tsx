@@ -21,7 +21,6 @@ const ChecklistActions = (props: Props) => {
     const handleLeave = () => {
 
     }
-    console.log(props.role)
     if (!props.role) return null
     return <div className={`actions ${props.className || ''}`}>
         {

@@ -1,0 +1,17 @@
+.input {
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: var(--ssltc-btn-secondary-bg);
+    color: var(--ssltc-btn-secondary-text);
+    border: 0px;
+    box-shadow: 1px 0px 4px #0c0c0d1a 1px 0px 4px #0c0c0d1a;
+    position: relative;
+    width: 100%;
+    padding: 8px 10px;
+    transition: 0.1s ease all;
+    transform: scale(1);
+}
+.input:focus:focus-within{
+    outline: none;
+    transform: scale(1.01);
+}
