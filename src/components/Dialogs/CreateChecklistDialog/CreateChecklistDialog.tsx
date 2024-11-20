@@ -1,7 +1,7 @@
 import useDialog from "src/hooks/useDialog";
 import Dialog from "../Dialog"
-import Input from "src/components/Input/Input";
 import '../Form.css'
+import Field from "src/components/Fields/Field";
 
 const CreateChecklistDialog = () => {
     const { closeDialog } = useDialog();
@@ -22,15 +22,18 @@ const CreateChecklistDialog = () => {
         onCancel={closeDialog}
     >
         <form action="post" className="form">
-            <Input
+            <Field
+                label="Título de la lista"
                 type="text"
                 placeholder="Escribe el título..."
             />
-            <Input
+            <Field
+                label="Fecha límite de realización"
                 type="date"
                 placeholder="dd/mm/aaaa"
             />
-            <Input
+            <Field
+                label="Completitud"
                 type="toggle"
                 placeholder="¿Mostrar progreso de las tareas?"
             />

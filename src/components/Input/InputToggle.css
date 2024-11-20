@@ -12,6 +12,7 @@
     border: 1px solid var(--ssltc-btn-secondary-text);
     line-height: 1.15;
     border-radius: 4px 0px 0px 4px;
+    background-color: white;
 }
 
 .input.input-toggle-label {
