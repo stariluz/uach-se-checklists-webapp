@@ -1,14 +1,8 @@
-<<<<<<< Updated upstream
 import './HomePage.css'
 import ChecklistsList from 'src/components/Checklists/ChecklistsList/ChecklistsList'
 import Button from 'src/components/Buttons/Button'
 import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus'
-=======
 import './HomePage.css';
-import ChecklistsList from 'src/components/ChecklistsList/ChecklistsList';
-import Button from 'src/components/Buttons/Button';
-import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus';
->>>>>>> Stashed changes
 import useDialog from 'src/hooks/useDialog';
 import Dialog from 'src/components/Dialogs/Dialog';
 import GoogleLoginLogic from 'src/components/Auth/GoogleLoginLogic';
