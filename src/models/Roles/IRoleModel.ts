@@ -1,6 +1,10 @@
 import IBaseModel from "../IBaseModel";
+import RoleType from "./Role.type";
 
-interface IRoleModel extends IBaseModel{
-    title?: string;
+/**
+ * @deprecated stariluz-November 18, 2024
+ */
+interface IRoleModel extends IBaseModel {
+    title?: RoleType;
 }
 export default IRoleModel;

@@ -5,6 +5,12 @@ import IconPencilPlus from './IconPencilPlus'
 import IconShare from './IconShare'
 import IconTrashXFilled from './IconTrashXFilled'
 import IconUserCircle from './IconUserCircle'
+import IconPlus from './IconPlus'
+import IconArrowBack from './IconArrowBack'
+import IconSquare from "./IconSquare";
+import IconCheckbox from "./IconCheckbox";
+import IconSquareCheck from "./IconSquareCheck";
+import IconLockSquare from "./IconLockSquare";
 
 export {
     Icon12Hours,
@@ -14,5 +20,11 @@ export {
     IconShare,
     IconTrashXFilled,
     IconUserCircle,
+    IconPlus,
+    IconArrowBack,
+    IconSquare,
+    IconCheckbox,
+    IconSquareCheck,
+    IconLockSquare
 }
 
