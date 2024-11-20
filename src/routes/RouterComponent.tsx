@@ -6,7 +6,11 @@ import {
 } from "react-router-dom";
 import HomePage from "../views/HomePage/HomePage";
 import Layout from "src/components/Layout/Layout";
+<<<<<<< Updated upstream
 import ChecklistDetail from "src/views/ChecklistDetail/ChecklistDetail";
+=======
+import MainPage from "src/views/MainPage/MainPage";
+>>>>>>> Stashed changes
 
 const router = createBrowserRouter(
   [
@@ -20,9 +24,15 @@ const router = createBrowserRouter(
           children: []
         },
         {
+<<<<<<< Updated upstream
           path: "/:url",
           element: <ChecklistDetail />,
           children: []
+=======
+        path: "/main",
+        element: <MainPage />,
+        children: []
+>>>>>>> Stashed changes
         },
         // {
         //   path: "/dev",
