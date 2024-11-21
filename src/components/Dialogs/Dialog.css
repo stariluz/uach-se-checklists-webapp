@@ -1,24 +1,29 @@
-.dialog{
-    width: 450px;
+.dialog {
+    font-size: 16px;
+    width: 400px;
     background-color: white;
     border-radius: 0.5rem;
     padding: 1rem;
     display: none;
-}
-.dialog-open{
-    display: unset;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.dialog-footer{
+.dialog.dialog-open {
+    display: flex;
+}
+
+.dialog-footer {
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
     align-items: center;
 }
 
-.dialog-footer.footer-center{
+.dialog-footer.footer-center {
     justify-content: center;
 }
-.dialog-footer.footer-distributed{
+
+.dialog-footer.footer-distributed {
     justify-content: space-between;
 }
