@@ -2,15 +2,18 @@ import './HomePage.css'
 import ChecklistsList from 'src/components/Checklists/ChecklistsList/ChecklistsList'
 import Button from 'src/components/Buttons/Button'
 import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus'
+import './HomePage.css';
 import useDialog from 'src/hooks/useDialog';
 import CreateChecklistDialog from 'src/components/Dialogs/CreateChecklistDialog/CreateChecklistDialog';
 
 function HomePage() {
   const { showDialog } = useDialog();
-  const openDialogCreateChecklist=()=>{
+
+  const openDialogCreateChecklist = () => {
     console.log("show dialog")
-    showDialog(<CreateChecklistDialog/>);
+    showDialog(<CreateChecklistDialog />);
   }
+
   return (
     <>
       <div className="container">
@@ -18,7 +21,7 @@ function HomePage() {
           <Button
             icon={<IconLibraryPlus />}
             iconPos='left'
-            onClick={()=>openDialogCreateChecklist()}
+            onClick={() => openDialogCreateChecklist()}
           >
             Crear nueva checklist
           </Button>

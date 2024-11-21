@@ -2,14 +2,14 @@ import React from 'react';
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import axios from 'axios';
 
-type GoogleLoginLogicProps = {
+type GoogleSignupLogicProps = {
   buttonText: "signin_with" | "signup_with" | "continue_with" | "signin" | undefined;
-  onLoginSuccess: (picture: string) => void;
+  onSignupSuccess: (picture: string) => void;
 };
 
-const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
-  const handleLoginSuccess = async (response: CredentialResponse) => {
-    console.log('Login Success:', response);
+const GoogleSignupLogic = ({ buttonText }: GoogleSignupLogicProps) => {
+  const handleSignupSuccess = async (response: CredentialResponse) => {
+    console.log('Signup Success:', response);
 
     const token = response.credential;
     if (!token) {
@@ -33,7 +33,7 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
     console.log('Picture URL:', picture);
 
     try {
-      const res = await axios.post('http://localhost:3000/login', {
+      const res = await axios.post('http://localhost:3000/users', {
         email: email,
         google_token: token
       });
@@ -43,19 +43,19 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
     }
   };
 
-  const handleLoginFailure = () => {
-    console.log('Login Failed');
+  const handleSignupFailure = () => {
+    console.log('Signup Failed');
   };
 
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || ''}>
       <GoogleLogin
-        onSuccess={handleLoginSuccess}
-        onError={handleLoginFailure}
-        text={buttonText} 
+        onSuccess={handleSignupSuccess}
+        onError={handleSignupFailure}
+        text={buttonText}
       />
     </GoogleOAuthProvider>
   );
 };
 
-export default GoogleLoginLogic;
+export default GoogleSignupLogic;

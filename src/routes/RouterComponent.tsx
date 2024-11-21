@@ -7,6 +7,7 @@ import {
 import HomePage from "../views/HomePage/HomePage";
 import Layout from "src/components/Layout/Layout";
 import ChecklistDetail from "src/views/ChecklistDetail/ChecklistDetail";
+import MainPage from "src/views/MainPage/MainPage";
 
 const router = createBrowserRouter(
   [
@@ -23,6 +24,11 @@ const router = createBrowserRouter(
           path: "/:url",
           element: <ChecklistDetail />,
           children: []
+        },
+        {
+        path: "/main",
+        element: <MainPage />,
+        children: []
         },
         // {
         //   path: "/dev",
