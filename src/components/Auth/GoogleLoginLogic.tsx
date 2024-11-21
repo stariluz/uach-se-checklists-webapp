@@ -1,6 +1,7 @@
-import React from 'react';
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import useAuth from 'src/hooks/useAuth';
 
 type GoogleLoginLogicProps = {
   buttonText: "signin_with" | "signup_with" | "continue_with" | "signin" | undefined;
@@ -8,6 +9,9 @@ type GoogleLoginLogicProps = {
 };
 
 const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+
   const handleLoginSuccess = async (response: CredentialResponse) => {
     console.log('Login Success:', response);
 
@@ -16,7 +20,6 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
       console.error('Token is undefined');
       return;
     }
-    console.log('Token:', token);
 
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -25,19 +28,19 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
     }).join(''));
 
     const userInfo = JSON.parse(jsonPayload);
-    console.log('User Info:', userInfo);
-
     const email = userInfo.email;
     const picture = userInfo.picture;
-    console.log('Email:', email);
-    console.log('Picture URL:', picture);
-
     try {
-      const res = await axios.post('http://localhost:3000/login', {
+      const res = await axios.post('/login', {
         email: email,
         google_token: token
       });
-      console.log('Respuesta del servidor:', res.data);
+      console.log('@dev Respuesta del servidor:', res.data);
+      setAuth({
+        user: new UserModel(res.data.user),
+        token: token
+      });
+      navigate('/home');
     } catch (error) {
       console.error('Error al enviar los datos al backend:', error);
     }
