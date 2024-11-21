@@ -1,3 +1,4 @@
+import useAuth from 'src/hooks/useAuth';
 import Button from '../Buttons/Button';
 import { IconDoorExit, IconUserCircle } from '../Icons';
 import './Header.css'
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const Header = (props: Props) => {
+    const { auth } = useAuth();
     return <header className='header'>
         <section className='navbar-left'></section>
         <section className='navbar-right'>
@@ -15,7 +17,18 @@ const Header = (props: Props) => {
                 icon={<IconDoorExit />}
                 onClick={props.onLogout}
             />
-            <IconUserCircle />
+            <div className="account">
+                {
+                    auth?.user?.picture_url ?
+                        <img
+                            className='account-picture'
+                            src={auth?.user?.picture_url}
+                            alt="Profile picture"
+                        />
+                        :
+                        <IconUserCircle />
+                }
+            </div>
         </section>
     </header>
 }

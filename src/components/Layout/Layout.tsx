@@ -1,33 +1,40 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import './Layout.css'
 import Header from "../Header/Header";
 import { DialogProvider } from "src/hooks/useDialog";
-import AuthContext from "src/context/AuthProvider";
-import { useContext } from "react";
 import axios from "src/api/axios";
 import { googleLogout } from "@react-oauth/google";
+import useAuth from "src/hooks/useAuth";
 
 const Layout = () => {
-    const { setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useAuth();
     const navigate = useNavigate();
-  
+    const location = useLocation();
+
     const logout = async () => {
         // @todo check if works
-        axios.post('/logout').then(()=>{
+        axios.post('/logout').then(() => {
             googleLogout();
             setAuth({});
-            navigate('/main');
+            navigate('/main', {
+                state: {
+                    from: location
+                },
+                replace: true,
+            });
         });
     }
     return (
-        <>
-            <DialogProvider>
-                <Header onLogout={logout}/>
-                <main className="layout-content">
-                    <Outlet />
-                </main>
-            </DialogProvider>
-        </>
+        auth?.user
+            ? <>
+                <DialogProvider>
+                    <Header onLogout={logout} />
+                    <main className="layout-content">
+                        <Outlet />
+                    </main>
+                </DialogProvider>
+            </>
+            : <Navigate to="/login" state={{ from: location }} replace />
     );
 };
 

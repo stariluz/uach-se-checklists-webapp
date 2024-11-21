@@ -12,8 +12,8 @@ import MainPage from "src/views/MainPage/MainPage";
 const router = createBrowserRouter(
   [
     {
-      path: "/main",  // Ahora MainPage tiene su propia ruta independiente
-      element: <MainPage />,  // Directamente accesible sin necesidad de Layout
+      path: "/login",
+      element: <MainPage />, 
       children: []
     },
     {
@@ -26,13 +26,8 @@ const router = createBrowserRouter(
           children: []
         },
         {
-          path: "/:url",
+          path: ":user_id/:checklist_id",
           element: <ChecklistDetail />,
-          children: []
-        },
-        {
-          path: "/main",
-          element: <MainPage />,
           children: []
         },
         // {
