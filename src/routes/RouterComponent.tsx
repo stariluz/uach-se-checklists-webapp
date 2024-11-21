@@ -12,6 +12,11 @@ import MainPage from "src/views/MainPage/MainPage";
 const router = createBrowserRouter(
   [
     {
+      path: "/main",  // Ahora MainPage tiene su propia ruta independiente
+      element: <MainPage />,  // Directamente accesible sin necesidad de Layout
+      children: []
+    },
+    {
       path: "/",
       element: <Layout />,
       children: [
@@ -26,9 +31,9 @@ const router = createBrowserRouter(
           children: []
         },
         {
-        path: "/main",
-        element: <MainPage />,
-        children: []
+          path: "/main",
+          element: <MainPage />,
+          children: []
         },
         // {
         //   path: "/dev",

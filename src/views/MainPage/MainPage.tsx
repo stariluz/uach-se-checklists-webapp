@@ -1,4 +1,5 @@
 import './MainPage.css';
+import imagePath from '../../assets/storyset_hero_01.svg';
 import GoogleLoginLogic from 'src/components/Auth/GoogleLoginLogic';
 import GoogleLogoutComponent from 'src/components/Auth/GoogleLogout';
 import GoogleSignupLogic from 'src/components/Auth/GoogleSignupLogic';
@@ -22,12 +23,14 @@ function MainPage() {
         <div className="subtitle">
           Tus pendientes, proyectos, tareas, listas de compras, quehaceres y más en un sitio, de forma sencilla, y colaborativa.
         </div>
+        <div className="image-container">
+          <img src={imagePath} alt="Checklist image" />
+        </div>
         <div className='crea'>¡Crea tú cuenta!</div>
         <div className='cuenta'>¿Ya tienes una cuenta?</div>
         <div className="auth-buttons">
           <GoogleSignupLogic buttonText="signup_with" onSignupSuccess={handleSignupSuccess} />
           <GoogleLoginLogic buttonText="signin_with" onLoginSuccess={handleLoginSuccess} />
-          <GoogleLogoutComponent />
         </div>
         {profilePicture && <img src={profilePicture} alt="Profile" className="profile-picture" />}
       </div>
