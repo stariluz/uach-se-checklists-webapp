@@ -5,6 +5,7 @@ import { DialogProvider } from "src/hooks/useDialog";
 import AuthContext from "src/context/AuthProvider";
 import { useContext } from "react";
 import axios from "src/api/axios";
+import { googleLogout } from "@react-oauth/google";
 
 const Layout = () => {
     const { setAuth } = useContext(AuthContext);
@@ -13,6 +14,7 @@ const Layout = () => {
     const logout = async () => {
         // @todo check if works
         axios.post('/logout').then(()=>{
+            googleLogout();
             setAuth({});
             navigate('/main');
         });

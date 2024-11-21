@@ -13,9 +13,9 @@ type GoogleSignupLogicProps = {
 const GoogleSignupLogic = ({ buttonText }: GoogleSignupLogicProps) => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  
+
   const handleSignupSuccess = async (response: CredentialResponse) => {
-    console.log('Signup Success:', response);
+    console.log('@dev Signup Success:', response);
 
     const token = response.credential;
     if (!token) {
@@ -45,7 +45,7 @@ const GoogleSignupLogic = ({ buttonText }: GoogleSignupLogicProps) => {
       navigate('/home');
       console.log('@dev Respuesta del servidor:', res.data);
     } catch (error) {
-      console.error('Error al enviar los datos al backend:', error);
+      console.error( error);
     }
   };
 
