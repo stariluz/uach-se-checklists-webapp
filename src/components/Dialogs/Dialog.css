@@ -1,6 +1,6 @@
-.dialog{
+.dialog {
     font-size: 16px;
-    width: 450px;
+    width: 400px;
     background-color: white;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -8,20 +8,22 @@
     flex-direction: column;
     gap: 1rem;
 }
-.dialog-open{
+
+.dialog.dialog-open {
     display: flex;
 }
 
-.dialog-footer{
+.dialog-footer {
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
     align-items: center;
 }
 
-.dialog-footer.footer-center{
+.dialog-footer.footer-center {
     justify-content: center;
 }
-.dialog-footer.footer-distributed{
+
+.dialog-footer.footer-distributed {
     justify-content: space-between;
 }

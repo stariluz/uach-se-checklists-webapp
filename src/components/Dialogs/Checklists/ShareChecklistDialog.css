@@ -1,0 +1,42 @@
+.dialog.dialog-lg {
+    width: 750px;
+    padding: 1.25rem 1.5rem;
+}
+
+.dialog-share .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.dialog-share .dialog-footer {
+    justify-content: space-between;
+}
+
+.table {
+    display: grid;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.table-header {
+    font-weight: 700;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 2rem 1fr 1fr;
+    gap: 1rem;
+}
+
+.col-delete {
+    width: 2rem;
+}
+
+.col-user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}

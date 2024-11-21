@@ -1,12 +1,12 @@
 import { useState } from "react";
-import IInputProps from "./IInputProps.props";
 import Button from "../Buttons/Button";
 import IconCheck from "../Icons/IconCheck";
 import IconX from "../Icons/IconX";
 import './Input.css'
 import './InputToggle.css'
+import IInputToggleProps from "./IInputToggleProps.props";
 
-const InputToggle = (props: IInputProps) => {
+const InputToggle = (props: IInputToggleProps) => {
     const [value, setValue] = useState(props?.value??'');
 
     const handleToggle = (value: boolean) => {
@@ -30,14 +30,14 @@ const InputToggle = (props: IInputProps) => {
 
                     <Button
                         className={`input-toggle-btn btn-secondary ${value === false ? 'btn-negative' : ''}`}
-                        onClick={() => handleToggle(false)}
+                        onClick={() => handleToggle(props.rejectValue??false)}
                         icon={<IconX />}
                     >
                     </Button>
 
                     <Button
                         className={`input-toggle-btn btn-secondary ${value === true ? 'btn-negative' : ''}`}
-                        onClick={() => handleToggle(true)}
+                        onClick={() => handleToggle(props.acceptValue??true)}
                         icon={<IconCheck />}
                     >
                     </Button>

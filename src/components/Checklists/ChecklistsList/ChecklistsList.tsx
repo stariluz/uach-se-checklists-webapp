@@ -6,6 +6,7 @@ import { ChecklistWithGuestModel } from 'src/models/Checklists';
 import useDialog from 'src/hooks/useDialog';
 import DeleteChecklistDialog from 'src/components/Dialogs/Checklists/DeleteChecklistDialog';
 import LeaveChecklistDialog from 'src/components/Dialogs/Checklists/LeaveChecklistDialog';
+import ShareChecklistDialog from 'src/components/Dialogs/Checklists/ShareChecklistDialog';
 
 interface Props {
     checklist_items?: Array<ChecklistWithGuestModel>;
@@ -28,8 +29,7 @@ const ChecklistsList = (props: Props) => {
     }
 
     const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        // @todo Create ShareChecklistDialog
-        // showDialog(<ShareChecklistDialog checklist={checklist_item} />);
+        showDialog(<ShareChecklistDialog checklist_id={checklist_item.id} />);
     }
 
     if (props.checklist_items) {
