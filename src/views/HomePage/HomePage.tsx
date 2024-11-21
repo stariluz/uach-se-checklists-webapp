@@ -26,7 +26,7 @@ function HomePage() {
           </Button>
           <div>{/* @todo Select control */}</div>
         </div>
-        <ChecklistsList />
+        <ChecklistsList isDemo={true}/>
       </div>
     </>
   );

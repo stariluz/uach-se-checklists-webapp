@@ -1,9 +1,9 @@
 import useDialog from "src/hooks/useDialog";
 import Dialog from "../Dialog"
 import '../Form.css'
-import IChecklistDialogProps from "./IChecklistDialogProps.props";
+import ITaskDialogProps from "./ITaskDialogProps.props";
 
-const DeleteChecklistDialog = (props: IChecklistDialogProps) => {
+const DeleteTaskDialog = (props: ITaskDialogProps) => {
     const { closeDialog } = useDialog();
 
     const deleteChecklist = () => {
@@ -15,16 +15,16 @@ const DeleteChecklistDialog = (props: IChecklistDialogProps) => {
     return <Dialog
         header={
             <h2>
-                Borrar lista de tareas
+                Borrar tarea
             </h2>
         }
         onConfirm={deleteChecklist}
         onCancel={closeDialog}
     >
         <form action="delete" className="form">
-            <p className="center">¿Deseas eliminar la lista de tareas <i>"{props.checklist?.title || '(esta checklist no tiene título)'}"</i>?</p>
+            <p className="center">¿Deseas eliminar la lista de tareas <i>"{props.task?.title || '(esta tarea no tiene título)'}"</i>?</p>
         </form>
     </Dialog>
 }
 
-export default DeleteChecklistDialog;
+export default DeleteTaskDialog;
