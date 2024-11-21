@@ -7,20 +7,43 @@ import ChecklistActions from 'src/components/Checklists/ChecklistActions/Checkli
 import { NavLink } from 'react-router-dom';
 import { useDemoChecklist } from 'src/services/Checklists';
 import TasksList from 'src/components/Checklists/Tasks/TasksList/TasksList';
+import useDialog from 'src/hooks/useDialog';
+import { ChecklistWithGuestModel } from 'src/models/Checklists';
+import LeaveChecklistDialog from 'src/components/Dialogs/Checklists/LeaveChecklistDialog';
+import DeleteChecklistDialog from 'src/components/Dialogs/Checklists/DeleteChecklistDialog';
+import EditChecklistDialog from 'src/components/Dialogs/Checklists/EditChecklistDialog';
 
 interface Props {
     className?: string;
 }
 const ChecklistDetail = (props: Props) => {
+    const { showDialog } = useDialog();
     // @todo Request checklist with the id in the params of the url
     //       Remove the Demo Checklist when it is done.
-    const checklist = useDemoChecklist({role:"OWNER"});
+    const checklist = useDemoChecklist({ role: "OWNER" });
     if (!checklist.guest?.role) {
         // @todo Redirect to 404 page
         return null;
     }
+    const openDialogEditChecklist = (checklist_item: ChecklistWithGuestModel) => {
+        showDialog(<EditChecklistDialog checklist={checklist_item} />);
+    }
+
+    const openDialogDeleteChecklist = (checklist_item: ChecklistWithGuestModel) => {
+        showDialog(<DeleteChecklistDialog checklist={checklist_item} />);
+    }
+
+    const openDialogLeaveChecklist = (checklist_item: ChecklistWithGuestModel) => {
+        showDialog(<LeaveChecklistDialog checklist={checklist_item} />);
+    }
+
+    const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
+        // @todo Create ShareChecklistDialog
+        // showDialog(<ShareChecklistDialog checklist={checklist_item} />);
+    }
+
     return (
-        <div className={`container ${props.className??''} ${styles["container"]}`}>
+        <div className={`container ${props.className ?? ''} ${styles["container"]}`}>
             <ChecklistActions
                 role={checklist.guest?.role}
                 className={`floating ${styles["checklist-actions"]}`}
@@ -30,7 +53,13 @@ const ChecklistDetail = (props: Props) => {
                     <IconArrowBack className={styles["icon"]} />
                 </NavLink>
                 <ChecklistInfo checklist={checklist} />
-                <ChecklistActions role={checklist.guest?.role} className={styles["checklist-actions-sm"]} />
+                <ChecklistActions
+                    className={styles["checklist-actions-sm"]}
+                    role={checklist.guest?.role}
+                    onShare={() => openDialogShareChecklist(checklist)}
+                    onEdit={() => openDialogEditChecklist(checklist)}
+                    onDelete={() => openDialogDeleteChecklist(checklist)}
+                    onLeave={() => openDialogLeaveChecklist(checklist)} />
             </div>
             {checklist.guest?.role == 'OWNER' ?
                 <div className={styles["container-actions"]}>
@@ -55,7 +84,7 @@ const ChecklistDetail = (props: Props) => {
                 null
             }
             <div className={styles["taskslist-container"]}>
-                <TasksList isDemo={true} checklist={checklist}/>
+                <TasksList isDemo={true} checklist={checklist} />
             </div>
 
         </div >
