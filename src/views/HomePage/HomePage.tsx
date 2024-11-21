@@ -4,13 +4,12 @@ import Button from 'src/components/Buttons/Button'
 import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus'
 import './HomePage.css';
 import useDialog from 'src/hooks/useDialog';
-import CreateChecklistDialog from 'src/components/Dialogs/CreateChecklistDialog/CreateChecklistDialog';
+import CreateChecklistDialog from 'src/components/Dialogs/Checklists/CreateChecklistDialog';
 
 function HomePage() {
   const { showDialog } = useDialog();
 
   const openDialogCreateChecklist = () => {
-    console.log("show dialog")
     showDialog(<CreateChecklistDialog />);
   }
 

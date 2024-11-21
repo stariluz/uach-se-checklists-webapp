@@ -6,22 +6,27 @@ import { RoleType } from 'src/models/Roles';
 interface Props {
     className?: string;
     role?: RoleType;
+    onShare?: () => void;
+    onEdit?: () => void;
+    onDelete?: () => void;
+    onLeave?: () => void;
 }
 
 const ChecklistActions = (props: Props) => {
     const handleShare = () => {
-
+        if (props.onShare) props.onShare();
     }
     const handleEdit = () => {
-
+        if (props.onEdit) props.onEdit();
     }
     const handleDelete = () => {
-
+        if (props.onDelete) props.onDelete();
     }
     const handleLeave = () => {
-
+        if (props.onLeave) props.onLeave();
     }
     if (!props.role) return null
+
     return <div className={`actions ${props.className || ''}`}>
         {
             props.role == 'OWNER' ?
@@ -39,7 +44,7 @@ const ChecklistActions = (props: Props) => {
                     <Button
                         className='btn-ghost btn-danger'
                         icon={<IconTrashXFilled />}
-                        onClick={() => handleDelete}
+                        onClick={() => handleDelete()}
                     ></Button>
                 </>
                 :
