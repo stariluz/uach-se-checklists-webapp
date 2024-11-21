@@ -9,7 +9,7 @@ interface Props {
     checklist?: ChecklistItemModel
 }
 const ChecklistItem = (props: Props) => {
-    return <article className={`item ${props.className}`}>
+    return <article className={`item ${props.className??''}`}>
         <NavLink className={`item-link`} to={`/${props.checklist?.url??'url'}`} >
 
         </NavLink>

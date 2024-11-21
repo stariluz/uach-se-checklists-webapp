@@ -1,5 +1,4 @@
 import './MainPage.css';
-import Button from 'src/components/Buttons/Button';
 import GoogleLoginLogic from 'src/components/Auth/GoogleLoginLogic';
 import GoogleLogoutComponent from 'src/components/Auth/GoogleLogout';
 import GoogleSignupLogic from 'src/components/Auth/GoogleSignupLogic';
