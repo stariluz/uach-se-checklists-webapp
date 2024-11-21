@@ -19,23 +19,26 @@ function MainPage() {
   return (
     <div className="main-container">
       <div className="header">
-        <div className="title">¡Sé un Checkmylist!</div> {/* Título agregado */}
+        <div className="title">¡Sé un Checkmylist!</div>
         <div className="subtitle">
           Tus pendientes, proyectos, tareas, listas de compras, quehaceres y más en un sitio, de forma sencilla, y colaborativa.
         </div>
         <div className="image-container">
           <img src={imagePath} alt="Checklist image" />
         </div>
-        <div className='crea'>¡Crea tú cuenta!</div>
-        <div className='cuenta'>¿Ya tienes una cuenta?</div>
+        <div className="task-message">
+          ¡Crea tus listas de tareas y compártelas con quien tú quieras!
+        </div>
+      </div>
+      <div className="right-column">
+        <div className="crea">¡Crea tú cuenta!</div>
         <div className="auth-buttons">
           <GoogleSignupLogic buttonText="signup_with" onSignupSuccess={handleSignupSuccess} />
+        </div>
+        <div className="cuenta">¿Ya tienes una cuenta?</div>
+        <div className="auth-buttons">
           <GoogleLoginLogic buttonText="signin_with" onLoginSuccess={handleLoginSuccess} />
         </div>
-        {profilePicture && <img src={profilePicture} alt="Profile" className="profile-picture" />}
-      </div>
-      <div className="task-message">
-        ¡Crea tus listas de tareas y compártelas con quien tú quieras!
       </div>
     </div>
   );
