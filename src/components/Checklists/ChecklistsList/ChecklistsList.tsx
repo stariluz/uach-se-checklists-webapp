@@ -10,6 +10,7 @@ import LeaveChecklistDialog from 'src/components/Dialogs/Checklists/LeaveCheckli
 interface Props {
     checklist_items?: Array<ChecklistWithGuestModel>;
     className?: string;
+    isDemo?: boolean;
 }
 
 const ChecklistsList = (props: Props) => {
@@ -44,10 +45,13 @@ const ChecklistsList = (props: Props) => {
                 </li>
             )}
         </ul>
-    } else {
+    } else if (props.isDemo) {
         // console.error("Missing checklist items");
         // return <div>Missing checklist items</div>
         return <DemoChecklistsList />
+    } else {
+        // @todo Show no results message
+        return null;
     }
 }
 

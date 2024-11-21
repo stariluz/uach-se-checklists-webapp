@@ -22,7 +22,7 @@ const LeaveChecklistDialog = (props: IChecklistDialogProps) => {
         onCancel={closeDialog}
     >
         <form action="delete" className="form">
-            <p className="center">¿Deseas abandonar la lista de tareas <i>"{props.checklist?.title || '(esta checklist no tiene titulo)'}"</i>?</p>
+            <p className="center">¿Deseas abandonar la lista de tareas <i>"{props.checklist?.title || '(esta checklist no tiene título)'}"</i>?</p>
         </form>
     </Dialog>
 }

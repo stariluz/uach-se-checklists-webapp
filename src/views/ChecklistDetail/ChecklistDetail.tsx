@@ -12,6 +12,7 @@ import { ChecklistWithGuestModel } from 'src/models/Checklists';
 import LeaveChecklistDialog from 'src/components/Dialogs/Checklists/LeaveChecklistDialog';
 import DeleteChecklistDialog from 'src/components/Dialogs/Checklists/DeleteChecklistDialog';
 import EditChecklistDialog from 'src/components/Dialogs/Checklists/EditChecklistDialog';
+import CreateTaskDialog from 'src/components/Dialogs/Tasks/CreateTaskDialog';
 
 interface Props {
     className?: string;
@@ -25,29 +26,34 @@ const ChecklistDetail = (props: Props) => {
         // @todo Redirect to 404 page
         return null;
     }
+
     const openDialogEditChecklist = (checklist_item: ChecklistWithGuestModel) => {
         showDialog(<EditChecklistDialog checklist={checklist_item} />);
     }
-
     const openDialogDeleteChecklist = (checklist_item: ChecklistWithGuestModel) => {
         showDialog(<DeleteChecklistDialog checklist={checklist_item} />);
     }
-
     const openDialogLeaveChecklist = (checklist_item: ChecklistWithGuestModel) => {
         showDialog(<LeaveChecklistDialog checklist={checklist_item} />);
     }
-
     const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
         // @todo Create ShareChecklistDialog
         // showDialog(<ShareChecklistDialog checklist={checklist_item} />);
     }
 
+    const openDialogCreateTask = () => {
+        showDialog(<CreateTaskDialog />);
+    }
+
     return (
         <div className={`container ${props.className ?? ''} ${styles["container"]}`}>
             <ChecklistActions
-                role={checklist.guest?.role}
                 className={`floating ${styles["checklist-actions"]}`}
-            />
+                role={checklist.guest?.role}
+                onShare={() => openDialogShareChecklist(checklist)}
+                onEdit={() => openDialogEditChecklist(checklist)}
+                onDelete={() => openDialogDeleteChecklist(checklist)}
+                onLeave={() => openDialogLeaveChecklist(checklist)} />
             <div className={styles["container-head"]}>
                 <NavLink className={styles["btn-back"]} to={'/'} >
                     <IconArrowBack className={styles["icon"]} />
@@ -66,19 +72,25 @@ const ChecklistDetail = (props: Props) => {
                     <Button
                         icon={<IconPlus />}
                         iconPos='left'
-                        onClick={() => { }}
+                        onClick={() => { openDialogCreateTask() }}
                     >
                         Nueva tarea
                     </Button>
 
-                    <Button
+                    {/*
+                    @update Discarted for prototype November 20
+                    */}
+                    {/* <Button
                         icon={<IconLibraryPlus />}
                         iconPos='left'
                         onClick={() => { }}
                     >
                         Nuevo grupo de tareas
-                    </Button>
-                    <div>{/* @todo Sort by */}</div>
+                    </Button> */}
+                    <div>{/*
+                    @todo Sort by
+                    @update Discarted for prototype November 20
+                    */}</div>
                 </div>
                 :
                 null
