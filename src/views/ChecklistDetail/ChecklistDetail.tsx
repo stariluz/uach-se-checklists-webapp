@@ -13,6 +13,7 @@ import LeaveChecklistDialog from 'src/components/Dialogs/Checklists/LeaveCheckli
 import DeleteChecklistDialog from 'src/components/Dialogs/Checklists/DeleteChecklistDialog';
 import EditChecklistDialog from 'src/components/Dialogs/Checklists/EditChecklistDialog';
 import CreateTaskDialog from 'src/components/Dialogs/Tasks/CreateTaskDialog';
+import ShareChecklistDialog from 'src/components/Dialogs/Checklists/ShareChecklistDialog';
 
 interface Props {
     className?: string;
@@ -37,8 +38,7 @@ const ChecklistDetail = (props: Props) => {
         showDialog(<LeaveChecklistDialog checklist={checklist_item} />);
     }
     const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        // @todo Create ShareChecklistDialog
-        // showDialog(<ShareChecklistDialog checklist={checklist_item} />);
+        showDialog(<ShareChecklistDialog checklist_id={checklist_item.id} />);
     }
 
     const openDialogCreateTask = () => {
