@@ -40,12 +40,12 @@ const GoogleSignupLogic = ({ buttonText }: GoogleSignupLogicProps) => {
       });
       setAuth({
         user: new UserModel(res.data.user),
-        token: token
+        token: res.data.token
       });
       navigate('/home');
       console.log('@dev Respuesta del servidor:', res.data);
     } catch (error) {
-      console.error( error);
+      console.error(error);
     }
   };
 

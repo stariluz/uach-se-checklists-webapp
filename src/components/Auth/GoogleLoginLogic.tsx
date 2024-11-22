@@ -16,13 +16,13 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
   const handleLoginSuccess = async (response: CredentialResponse) => {
     console.log('@dev Login Success:', response);
 
-    const token = response.credential;
-    if (!token) {
-      console.error('Token is undefined');
+    const googleToken = response.credential;
+    if (!googleToken) {
+      console.error('googleToken is undefined');
       return;
     }
 
-    const base64Url = token.split('.')[1];
+    const base64Url = googleToken.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
@@ -34,13 +34,13 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
     try {
       const res = await axios.post('/login', {
         email: email,
-        google_token: token,
+        google_token: googleToken,
         picture_url: picture,
       });
       console.log('@dev Respuesta del servidor:', res.data);
       setAuth({
         user: new UserModel(res.data.user),
-        token: token
+        token: res.data.token
       });
       navigate('/');
     } catch (error) {
