@@ -75,7 +75,7 @@ const ChecklistDetail = (props: Props) => {
         showDialog(<DeleteChecklistDialog onComplete={exitChecklist} checklist={checklist} />);
     }
     const openDialogLeaveChecklist = (checklist: ChecklistWithGuestModel) => {
-        showDialog(<LeaveChecklistDialog onComplete={getChecklist} checklist={checklist} />);
+        showDialog(<LeaveChecklistDialog onComplete={exitChecklist} checklist={checklist} />);
     }
     const openDialogShareChecklist = (checklist: ChecklistWithGuestModel) => {
         showDialog(<ShareChecklistDialog onComplete={getChecklist} checklistId={checklist.id} />);
@@ -84,7 +84,15 @@ const ChecklistDetail = (props: Props) => {
     const openDialogCreateTask = () => {
         showDialog(<CreateTaskDialog checklistId={checklist?.id} onComplete={getChecklist} />);
     }
-    if (!checklist) return null;
+    if (!checklist) return <div className='init-not-found'>
+        No se encontro este recurso.
+        <NavLink to={'/'} replace={true}>
+            <Button
+                className='btn-primary'
+                icon={<IconArrowBack />}
+            >Volver al menu</Button>
+        </NavLink>
+    </div>;
     return (
         <div className={`container ${props.className ?? ''} ${styles["container"]}`}>
             <ChecklistActions

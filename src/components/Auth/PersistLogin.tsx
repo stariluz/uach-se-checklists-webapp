@@ -40,7 +40,7 @@ const PersistLogin = () => {
     return (
         <>
             {isLoading
-                ? <p>Cargando...</p>
+                ? <div className="init-loading">Cargando...</div>
                 : <Outlet />
             }
         </>

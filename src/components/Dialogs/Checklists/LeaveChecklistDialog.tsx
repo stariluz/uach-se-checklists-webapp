@@ -2,14 +2,25 @@ import useDialog from "src/hooks/useDialog";
 import Dialog from "../Dialog"
 import '../Form.css'
 import IChecklistDialogProps from "./IChecklistDialogProps.props";
+import useAxiosWithAuth from "src/hooks/useAxiosAuth";
+import useAuth from "src/hooks/useAuth";
 
 const LeaveChecklistDialog = (props: IChecklistDialogProps) => {
     const { closeDialog } = useDialog();
+    const axiosWithAuth = useAxiosWithAuth();
+    const { auth } = useAuth();
 
-    const leaveChecklist = () => {
-        // @todo verify data is right and call leave checklist methods
-        // @todo check exceptions and show alerts with them
-        closeDialog();
+    const leaveChecklist = async () => {
+
+        try {
+            const response = await axiosWithAuth.delete(`/checklists-guests/${auth?.user?.id}/${props.checklist?.id}`, {});
+            if (props.onComplete) props.onComplete();
+            console.log("@dev ", response);
+            closeDialog();
+        } catch (err) {
+            console.error(err);
+            // @todo add error alert
+        }
     }
 
     return <Dialog

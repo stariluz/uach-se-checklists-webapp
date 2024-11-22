@@ -69,6 +69,26 @@ h2{
   text-align: center;
 }
 
+.init-not-found{
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 700;
+  color: var(--ssltc-btn-secondary-text);
+  text-align: center;
+}
+.init-loading{
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: var(--ssltc-btn-secondary-text);
+  text-align: center;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

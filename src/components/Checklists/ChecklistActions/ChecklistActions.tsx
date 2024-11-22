@@ -51,7 +51,7 @@ const ChecklistActions = (props: Props) => {
                 <Button
                     className='btn-ghost btn-danger'
                     icon={<IconDoorExit />}
-                    onClick={() => handleLeave}
+                    onClick={() => handleLeave()}
                 ></Button>
         }
     </div>
