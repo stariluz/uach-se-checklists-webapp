@@ -4,7 +4,7 @@ import BaseModel from "../BaseModel";
 import IPermissionModel from "./IChecklistModel";
 
 class CreatePermissionModel extends BaseModel implements IPermissionModel {
-    user_id?: number =0;
+    userId?: number =0;
     title?: string = "";
     due_date?: Date = new Date();
     completed_at?: Date = new Date();
@@ -12,7 +12,7 @@ class CreatePermissionModel extends BaseModel implements IPermissionModel {
     url?: string = '';
     constructor(data: IPermissionModel = {}) {
         super({ ...data });
-        this.user_id = data.user_id ?? this.user_id;
+        this.userId = data.userId ?? this.userId;
         this.title = data.title ?? this.title;
         this.due_date = data.due_date ?? this.due_date;
         this.completed_at = data.completed_at ?? this.completed_at;

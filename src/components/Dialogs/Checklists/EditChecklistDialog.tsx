@@ -3,13 +3,15 @@ import Dialog from "../Dialog"
 import Field from "src/components/Fields/Field";
 import '../Form.css'
 import { ChecklistModel } from "src/models/Checklists";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IChecklistDialogProps from "./IChecklistDialogProps.props";
 
 const EditChecklistDialog = (props: IChecklistDialogProps) => {
     const { closeDialog } = useDialog();
-    const [checklist, setChecklist] = useState(new ChecklistModel(props.checklist));
-
+    const [checklist, setChecklist] = useState(props.checklist);
+    useEffect(()=>{
+        console.log(props.checklist);
+    },[props.checklist]);
     const updateChecklist = () => {
         // @todo verify data is right and call update checklist methods
         // @todo check exceptions and show alerts with them

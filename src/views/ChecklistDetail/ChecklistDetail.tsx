@@ -24,7 +24,7 @@ interface Props {
 const ChecklistDetail = (props: Props) => {
     const { showDialog } = useDialog();
     const { auth } = useAuth();
-    const {checklist_id, user_id} = useParams();
+    const {userId, checklistId} = useParams();
     const navigate = useNavigate();
     const location = useLocation();
     const axiosWithAuth = useAxiosWithAuth();
@@ -33,23 +33,12 @@ const ChecklistDetail = (props: Props) => {
 
     const getChecklist = async () => {
         try {
-            const response = await axiosWithAuth.get(`/checklist/${user_id}/${checklist_id}`, {
+            const response = await axiosWithAuth.get(`/checklists/${userId}/${checklistId}`, {
                 signal: controller.signal
             });
-            console.log("@dev ", response);
-            const _checklist = response.data.checklist.guest;
-            if (_checklist.userId == auth?.user?.id) {
-                _checklist.guest = {
-                    role: 'OWNER'
-                };
-            } else if (_checklist.guest?.role) {
-                navigate('/', {
-                    state: {
-                        from: location,
-                    },
-                    replace: true,
-                })
-            }
+            console.log("@dev ", response, auth?.user?.id);
+            const _checklist = response.data.checklist;
+            console.log(new ChecklistWithGuestModel(_checklist));
             setChecklist(new ChecklistWithGuestModel(_checklist));
         } catch (err) {
             console.error(err);
@@ -72,7 +61,7 @@ const ChecklistDetail = (props: Props) => {
         showDialog(<LeaveChecklistDialog checklist={checklist_item} />);
     }
     const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<ShareChecklistDialog checklist_id={checklist_item.id} />);
+        showDialog(<ShareChecklistDialog checklistId={checklist_item.id} />);
     }
 
     const openDialogCreateTask = () => {

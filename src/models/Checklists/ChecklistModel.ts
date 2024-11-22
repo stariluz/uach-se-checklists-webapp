@@ -4,7 +4,7 @@ import BaseModel from "../BaseModel";
 import IChecklistModel from "./IChecklistModel";
 
 class ChecklistModel extends BaseModel implements IChecklistModel {
-    user_id: number = 0;
+    userId: number = 0;
     title: string = "";
     due_date: Date = new Date();
     completed_at: Date = new Date();
@@ -12,7 +12,7 @@ class ChecklistModel extends BaseModel implements IChecklistModel {
     url: string = '';
     constructor(data: IChecklistModel = {}) {
         super({ ...data });
-        this.user_id = data.user_id ?? this.user_id;
+        this.userId = data.userId ?? this.userId;
         this.title = data.title ?? this.title;
         this.due_date = data.due_date ?? this.due_date;
         this.completed_at = data.completed_at ?? this.completed_at;

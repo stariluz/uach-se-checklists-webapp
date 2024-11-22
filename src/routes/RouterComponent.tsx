@@ -26,7 +26,7 @@ const router = createBrowserRouter(
           children: []
         },
         {
-          path: ":user_id/:checklist_id",
+          path: ":userId/:checklistId",
           element: <ChecklistDetail />,
           children: []
         },

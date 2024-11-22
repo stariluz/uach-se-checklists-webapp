@@ -5,13 +5,13 @@ import IChecklistGuestModel from "./IChecklistGuestModel";
 import { RoleType } from '../Roles';
 
 class CreateChecklistGuestModel extends BaseModel implements IChecklistGuestModel {
-    checklist_id?: number =0;
-    user_id?: number =0;
+    checklistId?: number =0;
+    userId?: number =0;
     role?: RoleType='SPECTATOR';
     constructor(data: IChecklistGuestModel = {}) {
         super({ ...data });
-        this.checklist_id = data.checklist_id ?? this.checklist_id;
-        this.user_id = data.user_id ?? this.user_id;
+        this.checklistId = data.checklistId ?? this.checklistId;
+        this.userId = data.userId ?? this.userId;
         this.role = data.role ?? this.role;
     }
 }

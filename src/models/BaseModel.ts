@@ -9,7 +9,7 @@ class BaseModel implements IBaseModel {
         id,
         created_at,
         updated_at
-    }: ITaskModel = {}) {
+    }: IBaseModel = {}) {
         this.id = id ?? 0;
         this.created_at = created_at ?? new Date();
         this.updated_at = updated_at ?? new Date();

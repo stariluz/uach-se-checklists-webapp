@@ -29,7 +29,7 @@ const ChecklistsList = (props: Props) => {
     }
 
     const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<ShareChecklistDialog checklist_id={checklist_item.id} />);
+        showDialog(<ShareChecklistDialog checklistId={checklist_item.id} />);
     }
 
     if (props.checklist_items) {

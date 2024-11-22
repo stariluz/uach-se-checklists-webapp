@@ -18,7 +18,7 @@ import '../Dialog.css'
 
 interface Props {
     className?: string;
-    checklist_id?: number;
+    checklistId?: number;
     isDemo?: boolean;
 }
 

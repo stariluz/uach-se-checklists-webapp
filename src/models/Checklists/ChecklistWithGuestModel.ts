@@ -4,11 +4,11 @@ import ChecklistModel from "./ChecklistModel"
 import IChecklistWithGuestModel from "./IChecklistWithGuestModel";
 
 class ChecklistWithGuestModel extends ChecklistModel {
-    guest?: ChecklistGuestModel=new ChecklistGuestModel();
-    user: UserModel=new UserModel();
+    guest?: ChecklistGuestModel = new ChecklistGuestModel();
+    user: UserModel = new UserModel();
     constructor(data: IChecklistWithGuestModel = {}) {
         super({ ...data });
-        this.guest = data.guest ?? this.guest;
+        this.guest = data.guest ? new ChecklistGuestModel(data.guest) : this.guest;
         this.user = data.user ?? this.user;
     }
 }

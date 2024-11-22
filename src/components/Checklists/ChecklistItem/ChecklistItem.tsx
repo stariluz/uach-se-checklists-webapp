@@ -13,7 +13,7 @@ interface Props {
     onLeave?: () => void;
 }
 const ChecklistItem = (props: Props) => {
-    const url=`${props.checklist?.user_id}/${props.checklist?.id}`;
+    const url=`${props.checklist?.userId}/${props.checklist?.id}`;
     return <article className={`item ${props.className ?? ''}`}>
         <NavLink className={`item-link`} to={url} />
         <div className="item-content">
