@@ -3,16 +3,16 @@ import ITaskModel from "./Tasks/ITaskModel";
 
 class BaseModel implements IBaseModel {
     id?: number;
-    created_at?: Date;
-    updated_at?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
     constructor({
         id,
-        created_at,
-        updated_at
+        createdAt,
+        updatedAt
     }: IBaseModel = {}) {
         this.id = id ?? 0;
-        this.created_at = created_at ?? new Date();
-        this.updated_at = updated_at ?? new Date();
+        this.createdAt = createdAt ?? new Date();
+        this.updatedAt = updatedAt ?? new Date();
     }
 }
 export default BaseModel;

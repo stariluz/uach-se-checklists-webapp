@@ -7,7 +7,7 @@ import { ChecklistModel } from "src/models/Checklists";
 import useAxiosWithAuth from "src/hooks/useAxiosAuth";
 
 interface CreateProps {
-    onCreate?: any;
+    onComplete?: any;
 }
 const CreateChecklistDialog = (props: CreateProps) => {
     const { closeDialog } = useDialog();
@@ -20,7 +20,7 @@ const CreateChecklistDialog = (props: CreateProps) => {
             const response = await axiosWithAuth.post('/checklists', {
                 ...checklist
             });
-            if (props.onCreate) props.onCreate();
+            if (props.onComplete) props.onComplete();
             console.log("@dev ", response);
             closeDialog();
         } catch (err) {

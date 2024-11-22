@@ -22,7 +22,11 @@ function HomePage() {
       });
       console.log("@dev ", response);
 
-      setChecklists(response.data.map((checklist: any) => new ChecklistWithGuestModel(checklist)));
+      setChecklists(response.data.map((checklist: any) => {
+        checklist.guest = checklist.guest[0];
+        return new ChecklistWithGuestModel(checklist)
+      }
+      ));
     } catch (err) {
       console.error(err);
     }
@@ -33,7 +37,7 @@ function HomePage() {
   }, [])
 
   const openDialogCreateChecklist = () => {
-    showDialog(<CreateChecklistDialog onCreate={getChecklists} />);
+    showDialog(<CreateChecklistDialog onComplete={getChecklists} />);
   }
 
   return (
@@ -49,7 +53,7 @@ function HomePage() {
           </Button>
           <div>{/* @todo Select control */}</div>
         </div>
-        <ChecklistsList checklist_items={checklists} isDemo={true} />
+        <ChecklistsList onComplete={getChecklists} checklist_items={checklists} isDemo={false} />
       </div>
     </>
   );

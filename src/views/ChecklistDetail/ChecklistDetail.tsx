@@ -24,7 +24,7 @@ interface Props {
 const ChecklistDetail = (props: Props) => {
     const { showDialog } = useDialog();
     const { auth } = useAuth();
-    const {userId, checklistId} = useParams();
+    const { userId, checklistId } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
     const axiosWithAuth = useAxiosWithAuth();
@@ -37,7 +37,9 @@ const ChecklistDetail = (props: Props) => {
                 signal: controller.signal
             });
             console.log("@dev ", response, auth?.user?.id);
+
             const _checklist = response.data.checklist;
+            _checklist.guest = _checklist.guest[0];
             console.log(new ChecklistWithGuestModel(_checklist));
             setChecklist(new ChecklistWithGuestModel(_checklist));
         } catch (err) {
@@ -52,7 +54,7 @@ const ChecklistDetail = (props: Props) => {
 
 
     const openDialogEditChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<EditChecklistDialog checklist={checklist_item} />);
+        showDialog(<EditChecklistDialog onComplete={getChecklist} checklist={checklist_item} />);
     }
     const openDialogDeleteChecklist = (checklist_item: ChecklistWithGuestModel) => {
         showDialog(<DeleteChecklistDialog checklist={checklist_item} />);
