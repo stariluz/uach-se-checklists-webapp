@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import IInputProps from "./IInputProps.props";
 import Button from "../Buttons/Button";
 import './Input.css'
@@ -6,7 +6,7 @@ import './InputDate.css'
 import { IconCalendarMonth } from "../Icons";
 
 const InputDate = (props: IInputProps) => {
-    const [value, setValue] = useState<Date>(props.value??undefined);
+    const [value, setValue] = useState<Date>(props.value ?? undefined);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const handleButtonClick = () => {
@@ -16,13 +16,16 @@ const InputDate = (props: IInputProps) => {
         if (props.onChange) props.onChange(new Date(event.target.value));
         else setValue(value);
     }
+    useEffect(() => {
+        setValue(props.value);
+    }, [props.value]);
     return (
         <div className="input-date-container">
             <input
                 className={`input input-date-input ${props.className ?? ''}`}
                 type="date"
                 placeholder={props.placeholder}
-                value={value?.toDateString()??undefined}
+                value={value ? value.toISOString().split('T')[0] : undefined}
                 name={props.name}
                 id={props.id}
                 onChange={handleChange}

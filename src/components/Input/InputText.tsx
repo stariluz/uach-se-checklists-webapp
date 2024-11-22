@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IInputProps from "./IInputProps.props";
 import './Input.css'
 
@@ -8,6 +8,9 @@ const InputText = (props: IInputProps) => {
         if (props.onChange) props.onChange(event.target.value);
         else setValue(value);
     }
+    useEffect(() => {
+        setValue(props.value);
+    }, [props.value]);
     return (
         <input
             className={`input ${props.className ?? ''}`}
