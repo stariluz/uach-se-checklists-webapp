@@ -4,13 +4,13 @@ import BaseModel from "../BaseModel";
 import ITaskGroupModel from "./ITaskGroupModel";
 
 class TaskGroupModel extends BaseModel implements ITaskGroupModel {
-    checklist_id: UUID = uuidv4() as UUID;
+    checklistId: number = 0;
     title: string = "";
     due_date: Date = new Date();
     completed_at: Date = new Date();
     constructor(data: ITaskGroupModel = {}) {
         super({ ...data });
-        this.checklist_id = data.checklist_id ?? this.checklist_id;
+        this.checklistId = data.checklistId ?? this.checklistId;
         this.title = data.title ?? this.title;
         this.due_date = data.due_date ?? this.due_date;
         this.completed_at = data.completed_at ?? this.completed_at;

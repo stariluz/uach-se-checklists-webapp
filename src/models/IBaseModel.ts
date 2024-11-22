@@ -1,8 +1,8 @@
 import UUID from 'src/types/uuid.type';
 
 interface IBaseModel{
-    id?: UUID;
-    created_at?: Date;
-    updated_at?: Date;
+    id?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 export default IBaseModel;

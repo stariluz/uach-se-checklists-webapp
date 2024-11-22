@@ -3,11 +3,11 @@ import { UserModel } from "src/models/Users";
 import './ChecklistOwnership.css'
 
 interface Ownership {
-    user_id?: string
+    userId?: string
     user?: UserModel
 }
 const ChecklistOwnership = (props: Ownership) => {
-    return props.user_id ?
+    return props.userId ?
         <span>de: {props?.user?.email || "User or email missing"}
             <ProfilePicture
                 picture_url={props?.user?.picture_url}

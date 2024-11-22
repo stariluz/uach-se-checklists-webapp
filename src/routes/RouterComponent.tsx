@@ -12,6 +12,11 @@ import MainPage from "src/views/MainPage/MainPage";
 const router = createBrowserRouter(
   [
     {
+      path: "/login",
+      element: <MainPage />, 
+      children: []
+    },
+    {
       path: "/",
       element: <Layout />,
       children: [
@@ -21,14 +26,9 @@ const router = createBrowserRouter(
           children: []
         },
         {
-          path: "/:url",
+          path: ":userId/:checklistId",
           element: <ChecklistDetail />,
           children: []
-        },
-        {
-        path: "/main",
-        element: <MainPage />,
-        children: []
         },
         // {
         //   path: "/dev",

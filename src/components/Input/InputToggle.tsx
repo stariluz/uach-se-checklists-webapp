@@ -7,7 +7,7 @@ import './InputToggle.css'
 import IInputToggleProps from "./IInputToggleProps.props";
 
 const InputToggle = (props: IInputToggleProps) => {
-    const [value, setValue] = useState(props?.value??'');
+    const [value, setValue] = useState(props.value??'');
 
     const handleToggle = (value: boolean) => {
         setValue(value);
