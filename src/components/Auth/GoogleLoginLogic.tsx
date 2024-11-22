@@ -1,6 +1,8 @@
-import React from 'react';
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from '@react-oauth/google';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import axios from 'src/api/axios';
+import useAuth from 'src/hooks/useAuth';
+import { UserModel } from 'src/models/Users';
 
 type GoogleLoginLogicProps = {
   buttonText: "signin_with" | "signup_with" | "continue_with" | "signin" | undefined;
@@ -8,38 +10,41 @@ type GoogleLoginLogicProps = {
 };
 
 const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
-  const handleLoginSuccess = async (response: CredentialResponse) => {
-    console.log('Login Success:', response);
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
 
-    const token = response.credential;
-    if (!token) {
-      console.error('Token is undefined');
+  const handleLoginSuccess = async (response: CredentialResponse) => {
+    console.log('@dev Login Success:', response);
+
+    const googleToken = response.credential;
+    if (!googleToken) {
+      console.error('googleToken is undefined');
       return;
     }
-    console.log('Token:', token);
 
-    const base64Url = token.split('.')[1];
+    const base64Url = googleToken.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
 
     const userInfo = JSON.parse(jsonPayload);
-    console.log('User Info:', userInfo);
-
     const email = userInfo.email;
     const picture = userInfo.picture;
-    console.log('Email:', email);
-    console.log('Picture URL:', picture);
-
     try {
-      const res = await axios.post('http://localhost:3000/login', {
+      const res = await axios.post('/login', {
         email: email,
-        google_token: token
+        google_token: googleToken,
+        picture_url: picture,
       });
-      console.log('Respuesta del servidor:', res.data);
+      console.log('@dev Respuesta del servidor:', res.data);
+      setAuth({
+        user: new UserModel(res.data.user),
+        token: res.data.token
+      });
+      navigate('/');
     } catch (error) {
-      console.error('Error al enviar los datos al backend:', error);
+      console.error( error);
     }
   };
 
@@ -52,7 +57,7 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
       <GoogleLogin
         onSuccess={handleLoginSuccess}
         onError={handleLoginFailure}
-        text={buttonText} 
+        text={buttonText}
       />
     </GoogleOAuthProvider>
   );

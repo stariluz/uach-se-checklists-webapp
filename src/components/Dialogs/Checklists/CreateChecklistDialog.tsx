@@ -4,15 +4,48 @@ import Field from "src/components/Fields/Field";
 import '../Form.css'
 import { useState } from "react";
 import { ChecklistModel } from "src/models/Checklists";
+import useAxiosWithAuth from "src/hooks/useAxiosAuth";
 
-const CreateChecklistDialog = () => {
+interface CreateProps {
+    onComplete?: any;
+}
+const CreateChecklistDialog = (props: CreateProps) => {
     const { closeDialog } = useDialog();
     const [checklist, setChecklist] = useState(new ChecklistModel());
+    const axiosWithAuth = useAxiosWithAuth();
 
-    const createChecklist = () => {
-        // @todo verify data is right and call create checklist methods
-        // @todo check exceptions and show alerts with them
-        closeDialog();
+    const createChecklist = async () => {
+
+        try {
+            const response = await axiosWithAuth.post('/checklists', {
+                ...checklist
+            });
+            if (props.onComplete) props.onComplete();
+            console.log("@dev ", response);
+            closeDialog();
+        } catch (err) {
+            console.error(err);
+            // @todo add error alert
+        }
+    }
+
+    const changeTitle = (value: string) => {
+        setChecklist((prev) => {
+            console.log(prev, value);
+            return { ...prev, title: value }
+        })
+    }
+    const changeDueDate = (value: string) => {
+        setChecklist((prev) => {
+            console.log(prev, value);
+            return { ...prev, due_date: new Date(value) }
+        })
+    }
+    const changeCompleteness = (value: boolean) => {
+        setChecklist((prev) => {
+            console.log(prev, value);
+            return { ...prev, completeness: value }
+        })
     }
 
     return <Dialog
@@ -29,22 +62,25 @@ const CreateChecklistDialog = () => {
                 label="Título de la lista"
                 type="text"
                 placeholder="Escribe el título..."
+                name="title"
                 value={checklist.title}
-                onChange={(value) => setChecklist({ ...checklist, title: value })}
+                onChange={(value) => changeTitle(value)}
             />
             <Field
                 label="Fecha límite de realización"
                 type="date"
                 placeholder="dd/mm/aaaa"
+                name="due_date"
                 value={checklist.due_date}
-                onChange={(value) => setChecklist({ ...checklist, due_date: value })}
+                onChange={(value) => changeDueDate(value)}
             />
             <Field
                 label="Completitud"
                 type="toggle"
                 placeholder="¿Mostrar progreso de las tareas?"
+                name="completeness"
                 value={checklist.completeness}
-                onChange={(value) => setChecklist({ ...checklist, completeness: value })}
+                onChange={(value) => changeCompleteness(value)}
             />
         </form>
     </Dialog>

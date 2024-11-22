@@ -2,18 +2,29 @@ import useDialog from "src/hooks/useDialog";
 import Dialog from "../Dialog"
 import Field from "src/components/Fields/Field";
 import '../Form.css'
-import { ChecklistModel } from "src/models/Checklists";
 import { useState } from "react";
 import IChecklistDialogProps from "./IChecklistDialogProps.props";
+import useAxiosWithAuth from "src/hooks/useAxiosAuth";
 
 const EditChecklistDialog = (props: IChecklistDialogProps) => {
     const { closeDialog } = useDialog();
-    const [checklist, setChecklist] = useState(new ChecklistModel(props.checklist));
+   
+    const [checklist, setChecklist] = useState(props.checklist);
+    const axiosWithAuth = useAxiosWithAuth();
 
-    const updateChecklist = () => {
-        // @todo verify data is right and call update checklist methods
-        // @todo check exceptions and show alerts with them
-        closeDialog();
+    const updateChecklist = async () => {
+
+        try {
+            const response = await axiosWithAuth.put(`/checklists/${checklist?.id}`, {
+                ...checklist
+            });
+            if (props.onComplete) props.onComplete();
+            console.log("@dev ", response);
+            closeDialog();
+        } catch (err) {
+            console.error(err);
+            // @todo add error alert
+        }
     }
 
     return <Dialog

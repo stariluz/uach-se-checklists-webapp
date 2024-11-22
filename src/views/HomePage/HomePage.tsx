@@ -5,12 +5,39 @@ import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus'
 import './HomePage.css';
 import useDialog from 'src/hooks/useDialog';
 import CreateChecklistDialog from 'src/components/Dialogs/Checklists/CreateChecklistDialog';
+import { useEffect, useState } from 'react';
+import useAxiosWithAuth from 'src/hooks/useAxiosAuth';
+import { ChecklistWithGuestModel } from 'src/models/Checklists';
 
 function HomePage() {
   const { showDialog } = useDialog();
+  const axiosWithAuth = useAxiosWithAuth();
+  const [checklists, setChecklists] = useState<Array<ChecklistWithGuestModel>>([]);
+  const controller = new AbortController();
+
+  const getChecklists = async () => {
+    try {
+      const response = await axiosWithAuth.get('/checklists', {
+        signal: controller.signal
+      });
+      console.log("@dev ", response);
+
+      setChecklists(response.data.map((checklist: any) => {
+        checklist.guest = checklist.guest[0];
+        return new ChecklistWithGuestModel(checklist)
+      }
+      ));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getChecklists();
+  }, [])
 
   const openDialogCreateChecklist = () => {
-    showDialog(<CreateChecklistDialog />);
+    showDialog(<CreateChecklistDialog onComplete={getChecklists} />);
   }
 
   return (
@@ -26,7 +53,7 @@ function HomePage() {
           </Button>
           <div>{/* @todo Select control */}</div>
         </div>
-        <ChecklistsList isDemo={true}/>
+        <ChecklistsList onComplete={getChecklists} checklist_items={checklists} isDemo={false} />
       </div>
     </>
   );

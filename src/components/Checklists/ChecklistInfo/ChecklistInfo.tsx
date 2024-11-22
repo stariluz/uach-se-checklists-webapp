@@ -11,8 +11,8 @@ const ChecklistInfo = (props: Props) => {
             <h2 className='checklist-title'>{props.checklist?.title || "Title is missing"}</h2>
             <div className='checklist-data'>
                 <ChecklistOwnership />
-                <span>Creado el {props.checklist?.created_at?.toString() || "dd de mmmm del yyyy"}</span>
-                <span>Ult. Modificación el {props.checklist?.updated_at?.toString() || "dd de mmmm del yyyy"}</span>
+                <span>Creado el {props.checklist?.createdAt?.toString() || "dd de mmmm del yyyy"}</span>
+                <span>Ult. Modificación el {props.checklist?.updatedAt?.toString() || "dd de mmmm del yyyy"}</span>
             </div>
         </div>
     );

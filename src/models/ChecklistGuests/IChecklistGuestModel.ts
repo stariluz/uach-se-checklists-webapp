@@ -1,10 +1,9 @@
-import UUID from 'src/types/uuid.type';
 import IBaseModel from "../IBaseModel";
 import { RoleType } from '../Roles';
 
 interface IChecklistGuestModel extends IBaseModel {
-    checklist_id?: UUID;
-    user_id?: UUID;
+    checklistId?: number;
+    userId?: number;
     role?: RoleType;
 }
 export default IChecklistGuestModel;
