@@ -1,11 +1,9 @@
 import Button from 'src/components/Buttons/Button';
 import styles from './ChecklistDetail.module.css'
-import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus';
 import ChecklistInfo from 'src/components/Checklists/ChecklistInfo/ChecklistInfo';
 import { IconArrowBack, IconPlus } from 'src/components/Icons';
 import ChecklistActions from 'src/components/Checklists/ChecklistActions/ChecklistActions';
 import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useDemoChecklist } from 'src/services/Checklists';
 import TasksList from 'src/components/Checklists/Tasks/TasksList/TasksList';
 import useDialog from 'src/hooks/useDialog';
 import { ChecklistWithGuestModel } from 'src/models/Checklists';
@@ -17,6 +15,7 @@ import ShareChecklistDialog from 'src/components/Dialogs/Checklists/ShareCheckli
 import { useEffect, useState } from 'react';
 import useAxiosWithAuth from 'src/hooks/useAxiosAuth';
 import useAuth from 'src/hooks/useAuth';
+import { TaskModel } from 'src/models/Tasks';
 
 interface Props {
     className?: string;
@@ -25,10 +24,11 @@ const ChecklistDetail = (props: Props) => {
     const { showDialog } = useDialog();
     const { auth } = useAuth();
     const { userId, checklistId } = useParams();
-    const navigate = useNavigate();
-    const location = useLocation();
     const axiosWithAuth = useAxiosWithAuth();
     const [checklist, setChecklist] = useState<ChecklistWithGuestModel>();
+    const [tasks, setTasks] = useState<Array<TaskModel>>([]);
+    const navigate = useNavigate();
+    const location = useLocation();
     const controller = new AbortController();
 
     const getChecklist = async () => {
@@ -39,35 +39,50 @@ const ChecklistDetail = (props: Props) => {
             console.log("@dev ", response, auth?.user?.id);
 
             const _checklist = response.data.checklist;
+            const _tasks = response.data.checklist.task;
+
             _checklist.guest = _checklist.guest[0];
-            console.log(new ChecklistWithGuestModel(_checklist));
             setChecklist(new ChecklistWithGuestModel(_checklist));
+            console.log("@dev", checklist);
+
+            setTasks(_tasks.map((task: any) => {
+                return new TaskModel(task)
+            }));
+            console.log("@dev", tasks);
         } catch (err) {
             console.error(err);
+            // @todo Redirect to 404 page
         }
+    }
+    const exitChecklist = () => {
+        navigate('/', {
+            state: {
+                from: location,
+            },
+            replace: true,
+        });
     }
 
     useEffect(() => {
         getChecklist();
-        // @todo Redirect to 404 page
     }, [])
 
 
-    const openDialogEditChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<EditChecklistDialog onComplete={getChecklist} checklist={checklist_item} />);
+    const openDialogEditChecklist = (checklist: ChecklistWithGuestModel) => {
+        showDialog(<EditChecklistDialog onComplete={getChecklist} checklist={checklist} />);
     }
-    const openDialogDeleteChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<DeleteChecklistDialog checklist={checklist_item} />);
+    const openDialogDeleteChecklist = (checklist: ChecklistWithGuestModel) => {
+        showDialog(<DeleteChecklistDialog onComplete={exitChecklist} checklist={checklist} />);
     }
-    const openDialogLeaveChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<LeaveChecklistDialog checklist={checklist_item} />);
+    const openDialogLeaveChecklist = (checklist: ChecklistWithGuestModel) => {
+        showDialog(<LeaveChecklistDialog onComplete={getChecklist} checklist={checklist} />);
     }
-    const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<ShareChecklistDialog checklistId={checklist_item.id} />);
+    const openDialogShareChecklist = (checklist: ChecklistWithGuestModel) => {
+        showDialog(<ShareChecklistDialog onComplete={getChecklist} checklistId={checklist.id} />);
     }
 
     const openDialogCreateTask = () => {
-        showDialog(<CreateTaskDialog onCreate={getChecklist} />);
+        showDialog(<CreateTaskDialog checklistId={checklist?.id} onComplete={getChecklist} />);
     }
     if (!checklist) return null;
     return (
@@ -121,7 +136,7 @@ const ChecklistDetail = (props: Props) => {
                 null
             }
             <div className={styles["taskslist-container"]}>
-                <TasksList isDemo={true} checklist={checklist} />
+                <TasksList onUpdate={getChecklist} checklist={checklist} tasks={tasks} isDemo={false} />
             </div>
 
         </div >

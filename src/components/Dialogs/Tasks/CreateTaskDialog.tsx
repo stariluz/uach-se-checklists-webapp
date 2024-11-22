@@ -4,21 +4,34 @@ import Field from "src/components/Fields/Field";
 import '../Form.css'
 import { useState } from "react";
 import { TaskModel } from "src/models/Tasks";
+import useAxiosWithAuth from "src/hooks/useAxiosAuth";
 
 interface CreateProps {
-    onCreate?: any;
+    onComplete?: any;
+    checklistId?: number;
 }
 
 const CreateTaskDialog = (props: CreateProps) => {
     const { closeDialog } = useDialog();
     const [task, setTask] = useState(new TaskModel());
+    const axiosWithAuth = useAxiosWithAuth();
 
-    const createTask = () => {
-        // @todo verify data is right and call create task methods
-        // @todo check exceptions and show alerts with them
-        if (props.onCreate) props.onCreate();
-        closeDialog();
+    const createTask = async () => {
+
+        try {
+            const response = await axiosWithAuth.post('/tasks', {
+                ...task,
+                checklistId: props.checklistId,
+            });
+            if (props.onComplete) props.onComplete();
+            console.log("@dev ", response);
+            closeDialog();
+        } catch (err) {
+            console.error(err);
+            // @todo add error alert
+        }
     }
+
 
     return <Dialog
         header={

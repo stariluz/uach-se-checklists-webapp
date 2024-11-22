@@ -4,16 +4,26 @@ import Field from "src/components/Fields/Field";
 import '../Form.css'
 import { useState } from "react";
 import ITaskDialogProps from "./ITaskDialogProps.props";
-import { TaskModel } from "src/models/Tasks";
+import useAxiosWithAuth from "src/hooks/useAxiosAuth";
 
 const EditTaskDialog = (props: ITaskDialogProps) => {
     const { closeDialog } = useDialog();
-    const [task, setTask] = useState(new TaskModel(props.task));
+    const [task, setTask] = useState(props.task);
+    const axiosWithAuth = useAxiosWithAuth();
 
-    const updateTask = () => {
-        // @todo verify data is right and call update checklist methods
-        // @todo check exceptions and show alerts with them
-        closeDialog();
+    const editTask = async () => {
+
+        try {
+            const response = await axiosWithAuth.patch(`/tasks/${task?.id}`, {
+                ...task,
+            });
+            if (props.onComplete) props.onComplete();
+            console.log("@dev ", response);
+            closeDialog();
+        } catch (err) {
+            console.error(err);
+            // @todo add error alert
+        }
     }
 
     return <Dialog
@@ -22,7 +32,7 @@ const EditTaskDialog = (props: ITaskDialogProps) => {
                 Editar tarea
             </h2>
         }
-        onConfirm={updateTask}
+        onConfirm={editTask}
         onCancel={closeDialog}
     >
         <form action="put" className="form">

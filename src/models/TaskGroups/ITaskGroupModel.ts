@@ -2,7 +2,7 @@ import UUID from 'src/types/uuid.type';
 import IBaseModel from "../IBaseModel";
 
 interface ITaskGroupModel extends IBaseModel{
-    checklistId?:UUID;
+    checklistId?:number;;
     title?: string;
     due_date?: Date;
     completed_at?: Date;

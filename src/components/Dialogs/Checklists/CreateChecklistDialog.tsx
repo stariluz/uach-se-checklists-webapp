@@ -31,19 +31,16 @@ const CreateChecklistDialog = (props: CreateProps) => {
 
     const changeTitle = (value: string) => {
         setChecklist((prev) => {
-            console.log(prev, value);
             return { ...prev, title: value }
         })
     }
     const changeDueDate = (value: string) => {
         setChecklist((prev) => {
-            console.log(prev, value);
             return { ...prev, due_date: new Date(value) }
         })
     }
     const changeCompleteness = (value: boolean) => {
         setChecklist((prev) => {
-            console.log(prev, value);
             return { ...prev, completeness: value }
         })
     }

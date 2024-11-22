@@ -22,15 +22,15 @@ const ChecklistsList = (props: Props) => {
     }
 
     const openDialogDeleteChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<DeleteChecklistDialog checklist={checklist_item} />);
+        showDialog(<DeleteChecklistDialog onComplete={props.onComplete} checklist={checklist_item} />);
     }
 
     const openDialogLeaveChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<LeaveChecklistDialog checklist={checklist_item} />);
+        showDialog(<LeaveChecklistDialog onComplete={props.onComplete} checklist={checklist_item} />);
     }
 
     const openDialogShareChecklist = (checklist_item: ChecklistWithGuestModel) => {
-        showDialog(<ShareChecklistDialog checklistId={checklist_item.id} />);
+        showDialog(<ShareChecklistDialog onComplete={props.onComplete} checklistId={checklist_item.id} />);
     }
 
     if (props.checklist_items && props.checklist_items.length > 0) {
@@ -51,7 +51,6 @@ const ChecklistsList = (props: Props) => {
         // return <div>Missing checklist items</div>
         return <DemoChecklistsList />
     } else {
-        // @todo Show no results message
         return <div className='init-list'>
             ¡Crea tu primer checklist!
         </div>;

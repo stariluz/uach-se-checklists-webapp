@@ -20,6 +20,7 @@ interface Props {
     className?: string;
     checklistId?: number;
     isDemo?: boolean;
+    onComplete?: any;
 }
 
 const ShareChecklistDialog = (props: Props) => {
@@ -41,6 +42,7 @@ const ShareChecklistDialog = (props: Props) => {
     const onConfirm = () => {
         // @todo verify data is right and call update checklist methods
         // @todo check exceptions and show alerts with them
+        if (props.onComplete) props.onComplete();
     }
 
     const changeChecklistGuest = (index: number, value: RoleType) => {

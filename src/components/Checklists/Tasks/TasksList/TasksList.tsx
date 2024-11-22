@@ -11,17 +11,18 @@ interface Props {
     checklist?: ChecklistWithGuestModel;
     tasks?: TaskModel[];
     isDemo?: boolean;
+    onUpdate?: any;
 }
 
 const TasksList = (props: Props) => {
     const { showDialog } = useDialog();
     const openDialogEditTask = (task_item: TaskModel) => {
-        showDialog(<EditTaskDialog task={task_item} />);
+        showDialog(<EditTaskDialog onComplete={props.onUpdate} task={task_item} />);
     }
     const openDialogDeleteTask = (task_item: TaskModel) => {
-        showDialog(<DeleteTaskDialog task={task_item} />);
+        showDialog(<DeleteTaskDialog onComplete={props.onUpdate} task={task_item} />);
     }
-    if (props.tasks) {
+    if (props.tasks && props.tasks.length > 0) {
         if (!props.checklist?.guest?.role) return null;
         if (props.checklist?.guest?.role == 'OWNER') {
             return props.tasks?.map((task) => <TaskItemOwner
@@ -40,8 +41,24 @@ const TasksList = (props: Props) => {
     } else if (props.isDemo) {
         return <DemoTasksList {...props} />
     } else {
-        // @todo Show no results message
-        return null;
+        if (!props.checklist?.guest?.role) return null;
+        if (props.checklist?.guest?.role == 'OWNER') {
+            return <div className='init-list'>
+                ¡Agrega la primer tarea a tu checklist nueva!
+            </div>;
+        } else if (props.checklist?.guest?.role == 'COLABORATOR') {
+
+            return <div className='init-list'>
+                Esta checklist aún no tiene tareas.
+            </div>;
+        } else if (props.checklist?.guest?.role == 'SPECTATOR') {
+
+            return <div className='init-list'>
+                Esta checklist aún no tiene tareas.
+            </div>;
+        } else {
+            return null;
+        }
     }
 }
 export default TasksList;

@@ -8,7 +8,6 @@ import useAxiosWithAuth from "src/hooks/useAxiosAuth";
 
 const EditChecklistDialog = (props: IChecklistDialogProps) => {
     const { closeDialog } = useDialog();
-   
     const [checklist, setChecklist] = useState(props.checklist);
     const axiosWithAuth = useAxiosWithAuth();
 
