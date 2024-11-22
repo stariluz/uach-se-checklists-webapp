@@ -15,7 +15,7 @@ function HomePage() {
   const [checklists, setChecklists] = useState<Array<ChecklistWithGuestModel>>([]);
   const controller = new AbortController();
 
-  const getUsers = async () => {
+  const getChecklists = async () => {
     try {
       const response = await axiosWithAuth.get('/checklists', {
         signal: controller.signal
@@ -29,11 +29,11 @@ function HomePage() {
   }
 
   useEffect(() => {
-    getUsers();
+    getChecklists();
   }, [])
 
   const openDialogCreateChecklist = () => {
-    showDialog(<CreateChecklistDialog onCreate={getUsers} />);
+    showDialog(<CreateChecklistDialog onCreate={getChecklists} />);
   }
 
   return (

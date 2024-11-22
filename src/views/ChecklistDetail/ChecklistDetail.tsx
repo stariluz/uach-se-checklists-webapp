@@ -4,7 +4,7 @@ import IconLibraryPlus from 'src/components/Icons/IconLibraryPlus';
 import ChecklistInfo from 'src/components/Checklists/ChecklistInfo/ChecklistInfo';
 import { IconArrowBack, IconPlus } from 'src/components/Icons';
 import ChecklistActions from 'src/components/Checklists/ChecklistActions/ChecklistActions';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDemoChecklist } from 'src/services/Checklists';
 import TasksList from 'src/components/Checklists/Tasks/TasksList/TasksList';
 import useDialog from 'src/hooks/useDialog';
@@ -14,19 +14,53 @@ import DeleteChecklistDialog from 'src/components/Dialogs/Checklists/DeleteCheck
 import EditChecklistDialog from 'src/components/Dialogs/Checklists/EditChecklistDialog';
 import CreateTaskDialog from 'src/components/Dialogs/Tasks/CreateTaskDialog';
 import ShareChecklistDialog from 'src/components/Dialogs/Checklists/ShareChecklistDialog';
+import { useEffect, useState } from 'react';
+import useAxiosWithAuth from 'src/hooks/useAxiosAuth';
+import useAuth from 'src/hooks/useAuth';
 
 interface Props {
     className?: string;
 }
 const ChecklistDetail = (props: Props) => {
     const { showDialog } = useDialog();
-    // @todo Request checklist with the id in the params of the url
-    //       Remove the Demo Checklist when it is done.
-    const checklist = useDemoChecklist({ role: "OWNER" });
-    if (!checklist.guest?.role) {
-        // @todo Redirect to 404 page
-        return null;
+    const { auth } = useAuth();
+    const {checklist_id, user_id} = useParams();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const axiosWithAuth = useAxiosWithAuth();
+    const [checklist, setChecklist] = useState<ChecklistWithGuestModel>();
+    const controller = new AbortController();
+
+    const getChecklist = async () => {
+        try {
+            const response = await axiosWithAuth.get(`/checklist/${user_id}/${checklist_id}`, {
+                signal: controller.signal
+            });
+            console.log("@dev ", response);
+            const _checklist = response.data.checklist.guest;
+            if (_checklist.userId == auth?.user?.id) {
+                _checklist.guest = {
+                    role: 'OWNER'
+                };
+            } else if (_checklist.guest?.role) {
+                navigate('/', {
+                    state: {
+                        from: location,
+                    },
+                    replace: true,
+                })
+            }
+            setChecklist(new ChecklistWithGuestModel(_checklist));
+        } catch (err) {
+            console.error(err);
+        }
     }
+
+    useEffect(() => {
+        getChecklist();
+        // @todo Redirect to 404 page
+    }, [])
+
 
     const openDialogEditChecklist = (checklist_item: ChecklistWithGuestModel) => {
         showDialog(<EditChecklistDialog checklist={checklist_item} />);
@@ -42,9 +76,9 @@ const ChecklistDetail = (props: Props) => {
     }
 
     const openDialogCreateTask = () => {
-        showDialog(<CreateTaskDialog />);
+        showDialog(<CreateTaskDialog onCreate={getChecklist} />);
     }
-
+    if (!checklist) return null;
     return (
         <div className={`container ${props.className ?? ''} ${styles["container"]}`}>
             <ChecklistActions

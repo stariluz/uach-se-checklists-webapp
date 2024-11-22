@@ -5,8 +5,8 @@ import IChecklistGuestModel from "./IChecklistGuestModel";
 import { RoleType } from '../Roles';
 
 class ChecklistGuestModel extends BaseModel implements IChecklistGuestModel {
-    checklist_id: UUID = uuidv4() as UUID;
-    user_id: UUID = uuidv4() as UUID;
+    checklist_id: number = 0;
+    user_id: number = 0;
     role: RoleType='SPECTATOR';
     constructor(data: IChecklistGuestModel = {}) {
         super({ ...data });

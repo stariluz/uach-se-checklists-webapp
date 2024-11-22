@@ -4,7 +4,7 @@ import BaseModel from "../BaseModel";
 import ITaskGroupModel from "./ITaskGroupModel";
 
 class TaskGroupModel extends BaseModel implements ITaskGroupModel {
-    checklist_id: UUID = uuidv4() as UUID;
+    checklist_id: number = 0;
     title: string = "";
     due_date: Date = new Date();
     completed_at: Date = new Date();

@@ -4,8 +4,8 @@ import BaseModel from "../BaseModel";
 import ITaskModel from "./ITaskModel";
 
 class CreateTaskModel extends BaseModel implements ITaskModel {
-    checklist_id?: UUID = uuidv4() as UUID;
-    task_group_id?: UUID = uuidv4() as UUID;
+    checklist_id?: number =0;
+    task_group_id?: number =0;
     title?: string = "";
     due_date?: Date = new Date();
     completed_at?: Date = new Date();

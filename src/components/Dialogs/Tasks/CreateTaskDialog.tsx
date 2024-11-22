@@ -5,13 +5,18 @@ import '../Form.css'
 import { useState } from "react";
 import { TaskModel } from "src/models/Tasks";
 
-const CreateTaskDialog = () => {
+interface CreateProps {
+    onCreate?: any;
+}
+
+const CreateTaskDialog = (props: CreateProps) => {
     const { closeDialog } = useDialog();
     const [task, setTask] = useState(new TaskModel());
 
     const createTask = () => {
         // @todo verify data is right and call create task methods
         // @todo check exceptions and show alerts with them
+        if (props.onCreate) props.onCreate();
         closeDialog();
     }
 

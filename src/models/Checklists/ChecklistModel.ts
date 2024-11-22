@@ -4,7 +4,7 @@ import BaseModel from "../BaseModel";
 import IChecklistModel from "./IChecklistModel";
 
 class ChecklistModel extends BaseModel implements IChecklistModel {
-    user_id: UUID = uuidv4() as UUID;
+    user_id: number = 0;
     title: string = "";
     due_date: Date = new Date();
     completed_at: Date = new Date();
