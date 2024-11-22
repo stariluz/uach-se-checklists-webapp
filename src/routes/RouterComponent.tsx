@@ -8,36 +8,43 @@ import HomePage from "../views/HomePage/HomePage";
 import Layout from "src/components/Layout/Layout";
 import ChecklistDetail from "src/views/ChecklistDetail/ChecklistDetail";
 import MainPage from "src/views/MainPage/MainPage";
+import PersistLogin from "src/components/Auth/PersistLogin";
 
 const router = createBrowserRouter(
   [
     {
       path: "/login",
-      element: <MainPage />, 
+      element: <MainPage />,
       children: []
     },
     {
       path: "/",
-      element: <Layout />,
+      element: <PersistLogin />,
       children: [
         {
           path: "/",
-          element: <HomePage />,
-          children: []
-        },
-        {
-          path: ":userId/:checklistId",
-          element: <ChecklistDetail />,
-          children: []
-        },
-        // {
-        //   path: "/dev",
-        //   element: <DevPage />,
-        //   children: []
-        // },
-        {
-          path: '*',
-          element: <Navigate to={`/`} />
+          element: <Layout />,
+          children: [
+            {
+              path: "/",
+              element: <HomePage />,
+              children: []
+            },
+            {
+              path: ":userId/:checklistId",
+              element: <ChecklistDetail />,
+              children: []
+            },
+            // {
+            //   path: "/dev",
+            //   element: <DevPage />,
+            //   children: []
+            // },
+            {
+              path: '*',
+              element: <Navigate to={`/`} />
+            }
+          ]
         }
       ]
     }

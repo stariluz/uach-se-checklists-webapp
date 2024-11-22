@@ -8,6 +8,7 @@ class ChecklistGuestModel extends BaseModel implements IChecklistGuestModel {
     role: RoleType='SPECTATOR';
     constructor(data: IChecklistGuestModel = {}) {
         super({ ...data });
+        console.log(data.role);
         this.checklistId = data.checklistId ?? this.checklistId;
         this.userId = data.userId ?? this.userId;
         this.role = data.role ?? this.role;

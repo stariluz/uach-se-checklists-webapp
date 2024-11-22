@@ -13,6 +13,7 @@ import IconSquareCheck from "./IconSquareCheck";
 import IconLockSquare from "./IconLockSquare";
 import IconCalendarMonth from "./IconCalendarMonth";
 import IconLink from "./IconLink";
+import IconUserStar from "./IconUserStar";
 
 export {
     Icon12Hours,
@@ -29,6 +30,7 @@ export {
     IconSquareCheck,
     IconLockSquare,
     IconCalendarMonth,
-    IconLink
+    IconLink,
+    IconUserStar
 }
 

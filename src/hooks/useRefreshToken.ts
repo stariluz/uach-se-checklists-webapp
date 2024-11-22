@@ -1,16 +1,19 @@
 import axios from "src/api/axios";
 import useAuth from "./useAuth";
+import { UserModel } from "src/models/Users";
 
 const useRefreshToken = () => {
-    const {setAuth} = useAuth();
+    const { setAuth } = useAuth();
     const refresh = async () => {
-        const response = await axios.get('/refresh', {
-            withCredentials: true
+
+        const res = await axios.post(`/refresh-token`, {
+            token: sessionStorage.getItem('jwttoken'),
         })
-        setAuth((prev:any) => {
-            return { ...prev, token: response.data.token }
-        })
-        return response.data.token;
+        setAuth({
+            user: new UserModel(res.data.user),
+            token: res.data.token
+        });
+        return res.data.token;
     }
     return refresh;
 }

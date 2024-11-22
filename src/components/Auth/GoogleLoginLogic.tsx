@@ -10,7 +10,7 @@ type GoogleLoginLogicProps = {
 };
 
 const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
-  const { setAuth } = useAuth();
+  const { setAuth, cookies } = useAuth();
   const navigate = useNavigate();
 
   const handleLoginSuccess = async (response: CredentialResponse) => {
@@ -38,13 +38,16 @@ const GoogleLoginLogic = ({ buttonText }: GoogleLoginLogicProps) => {
         picture_url: picture,
       });
       console.log('@dev Respuesta del servidor:', res.data);
+      
+      console.log(res.data.token);
+      sessionStorage.setItem('jwttoken',res.data.token);
       setAuth({
         user: new UserModel(res.data.user),
         token: res.data.token
       });
       navigate('/');
     } catch (error) {
-      console.error( error);
+      console.error(error);
     }
   };
 

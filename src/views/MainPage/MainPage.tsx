@@ -3,14 +3,18 @@ import imagePath from '../../assets/storyset_hero_01.svg';
 import GoogleLoginLogic from 'src/components/Auth/GoogleLoginLogic';
 import GoogleSignupLogic from 'src/components/Auth/GoogleSignupLogic';
 import styles from './MainPage.module.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function MainPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleLoginSuccess = () => {
-    // setProfilePicture(picture);
+    navigate(from, { replace: true });
   };
 
   const handleSignupSuccess = () => {
-    // setProfilePicture(picture);
+    navigate(from, { replace: true });
   };
 
   return (

@@ -22,8 +22,8 @@ interface Props {
 }
 const ChecklistDetail = (props: Props) => {
     const { showDialog } = useDialog();
-    const { auth } = useAuth();
     const { userId, checklistId } = useParams();
+    const { auth } = useAuth();
     const axiosWithAuth = useAxiosWithAuth();
     const [checklist, setChecklist] = useState<ChecklistWithGuestModel>();
     const [tasks, setTasks] = useState<Array<TaskModel>>([]);

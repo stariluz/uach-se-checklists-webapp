@@ -11,7 +11,7 @@
 }
 
 .dialog-share .dialog-footer {
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .table {
@@ -38,5 +38,20 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    gap: 1rem;
+}
+.col-picture{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+}
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     gap: 0.5rem;
+}
+
+.d-flex>.input-field {
+    width: 100%;
 }

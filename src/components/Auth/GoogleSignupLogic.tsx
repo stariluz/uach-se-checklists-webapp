@@ -11,7 +11,7 @@ type GoogleSignupLogicProps = {
 };
 
 const GoogleSignupLogic = ({ buttonText }: GoogleSignupLogicProps) => {
-  const { setAuth } = useAuth();
+  const { setAuth, cookies } = useAuth();
   const navigate = useNavigate();
 
   const handleSignupSuccess = async (response: CredentialResponse) => {
@@ -38,6 +38,7 @@ const GoogleSignupLogic = ({ buttonText }: GoogleSignupLogicProps) => {
         google_token: token,
         picture_url: picture
       });
+      sessionStorage.setItem('jwttoken',res.data.token);
       setAuth({
         user: new UserModel(res.data.user),
         token: res.data.token

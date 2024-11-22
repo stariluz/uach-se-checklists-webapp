@@ -59,6 +59,16 @@ h2{
   position: relative;
 }
 
+.init-list{
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: var(--ssltc-btn-secondary-text);
+  text-align: center;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

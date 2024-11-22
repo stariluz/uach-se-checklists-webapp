@@ -15,6 +15,10 @@ function HomePage() {
   const [checklists, setChecklists] = useState<Array<ChecklistWithGuestModel>>([]);
   const controller = new AbortController();
 
+  useEffect(() => {
+    getChecklists();
+  }, [])
+  
   const getChecklists = async () => {
     try {
       const response = await axiosWithAuth.get('/checklists', {
@@ -29,12 +33,10 @@ function HomePage() {
       ));
     } catch (err) {
       console.error(err);
+      // @todo Redirect to 404 page
     }
   }
 
-  useEffect(() => {
-    getChecklists();
-  }, [])
 
   const openDialogCreateChecklist = () => {
     showDialog(<CreateChecklistDialog onComplete={getChecklists} />);
