@@ -8,6 +8,7 @@ interface Props {
     task?: TaskModel;
     onEdit?: () => void;
     onDelete?: () => void;
+    onChangeComplete?: (value: boolean) => void;
 }
 
 const TaskItemOwner = (props: Props) => {
@@ -29,8 +30,8 @@ const TaskItemOwner = (props: Props) => {
             onClick={handleEdit}
         />
         <div className={`${styles['task-content']}`}>
-            {props.task?.title??'Title missing'}
-            <Checkbox/>
+            {props.task?.title ?? 'Title missing'}
+            <Checkbox checked={props.task?.is_complete} onChange={props.onChangeComplete} />
         </div>
     </article>
 }
