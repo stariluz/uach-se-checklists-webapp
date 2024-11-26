@@ -6,7 +6,7 @@ class ChecklistModel extends BaseModel implements IChecklistModel {
     title: string = "";
     due_date?: Date = undefined;
     completed_at: Date = new Date();
-    completeness: Boolean = false;
+    completeness: boolean = false;
     url: string = '';
     constructor(data: IChecklistModel = {}) {
         super({ ...data });

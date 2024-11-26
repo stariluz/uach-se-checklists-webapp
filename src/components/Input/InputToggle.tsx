@@ -6,41 +6,45 @@ import './Input.css'
 import './InputToggle.css'
 import IInputToggleProps from "./IInputToggleProps.props";
 
-const InputToggle = (props: IInputToggleProps) => {
-    const [value, setValue] = useState(props.value);
+const InputToggle = ({
+    acceptValue = true,
+    rejectValue = false,
+    className, id, name, onChange, placeholder, type, value
+}: IInputToggleProps) => {
+    const [currentValue, setCurrentValue] = useState(value);
 
-    // useEffect(()=>{
-    //     setValue(props.value);
-    // },[props.value])
+    // useEffect(() => {
+    //     setCurrentValue(value);
+    // }, [value])
 
-    const handleToggle = (value: boolean) => {
-        setValue(value);
-        if (props.onChange) props.onChange(value); // Notificar al padre si hay un callback
+    const handleToggle = (currentValue: boolean) => {
+        setCurrentValue(currentValue);
+        if (onChange) onChange(currentValue); // Notificar al padre si hay un callback
     };
     return (
-        <div className={`input-toggle-container ${props.className ?? ''}`}>
-            <span className="input input-toggle-label">{props.placeholder}</span>
+        <div className={`input-toggle-container ${className ?? ''}`}>
+            <span className="input input-toggle-label">{placeholder}</span>
             <div className={`${'input-toggle-actions'}`}>
                 <label className={`${'input-toggle-input-label'}`}>
                     <input
                         type="radio"
-                        name={props.name}
-                        id={props.id}
-                        checked={value}
+                        name={name}
+                        id={id}
+                        checked={currentValue}
                         className={`${'input-toggle-input'}`}
                         readOnly
                     />
 
                     <Button
-                        className={`input-toggle-btn btn-secondary ${value === props.rejectValue ? 'btn-negative' : ''}`}
-                        onClick={() => handleToggle(props.rejectValue)}
+                        className={`input-toggle-btn btn-secondary ${currentValue === rejectValue ? 'btn-negative' : ''}`}
+                        onClick={() => handleToggle(rejectValue)}
                         icon={<IconX />}
                     >
                     </Button>
 
                     <Button
-                        className={`input-toggle-btn btn-secondary ${value === props.acceptValue ? 'btn-negative' : ''}`}
-                        onClick={() => handleToggle(props.acceptValue)}
+                        className={`input-toggle-btn btn-secondary ${currentValue === acceptValue ? 'btn-negative' : ''}`}
+                        onClick={() => handleToggle(acceptValue)}
                         icon={<IconCheck />}
                     >
                     </Button>

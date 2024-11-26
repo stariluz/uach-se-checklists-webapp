@@ -1,4 +1,3 @@
-import UUID from 'src/types/uuid.type';
 import IBaseModel from "../IBaseModel";
 
 interface IChecklistModel extends IBaseModel {
@@ -6,7 +5,7 @@ interface IChecklistModel extends IBaseModel {
     title?: string;
     due_date?: Date;
     completed_at?: Date;
-    completeness?: Boolean;
+    completeness?: boolean;
     url?: string;
 }
 export default IChecklistModel;
